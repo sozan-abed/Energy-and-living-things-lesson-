@@ -1,0 +1,2818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Living Science Book: Unit 2 — Energy & Living Things</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Fredoka (headings/playful) & Nunito (readable textbook body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:ital,wght@0,500;0,600;0,700;0,800;1,600&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Fredoka', 'sans-serif'],
+            sans: ['Nunito', 'sans-serif'],
+          },
+          colors: {
+            bookPaper: '#FFFDF7',
+            bookCream: '#F7F3E8',
+            sciBlue: '#0284C7',
+            sciTeal: '#0D9488',
+            sciAmber: '#F59E0B',
+            sciOrange: '#EA580C',
+            sciGreen: '#16A34A',
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    body {
+      font-family: 'Nunito', sans-serif;
+      background-color: #E8F1F5;
+      color: #1E293B;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, .font-display {
+      font-family: 'Fredoka', sans-serif;
+    }
+    /* Custom scrollbar for textbook panels */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F1F5F9;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #CBD5E1;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94A3B8;
+    }
+    /* Highlighted interactive textbook vocabulary chip */
+    .vocab-term {
+      color: #EA580C;
+      font-weight: 800;
+      background-color: #FFF7ED;
+      border-bottom: 2px dashed #FB923C;
+      padding: 0 5px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      display: inline-block;
+    }
+    .vocab-term:hover, .vocab-term:focus {
+      background-color: #FFEDD5;
+      transform: translateY(-1px);
+      box-shadow: 0 2px 6px rgba(234, 88, 12, 0.2);
+    }
+    /* Tactile 3D-feel buttons for primary kids */
+    .btn-tactile {
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
+      box-shadow: 0 3px 0 rgba(15, 23, 42, 0.18);
+    }
+    .btn-tactile:active {
+      transform: translateY(2px);
+      box-shadow: 0 1px 0 rgba(15, 23, 42, 0.18);
+    }
+    /* Pulse glow animation for energy packets */
+    @keyframes popIn {
+      0% { transform: scale(0.88); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .animate-pop {
+      animation: popIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- TOP NAVIGATION & TEACHER CONTROL HEADER -->
+  <header class="bg-gradient-to-r from-sky-700 via-teal-700 to-emerald-700 text-white shadow-lg sticky top-0 z-30">
+    <div class="max-w-[1600px] mx-auto px-3 sm:px-6 py-2.5 flex flex-wrap items-center justify-between gap-2">
+      <!-- Brand / Book Title -->
+      <div class="flex items-center gap-2.5">
+        <div class="bg-amber-400 text-slate-900 p-2 rounded-xl shadow-md flex items-center justify-center">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+          </svg>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-extrabold uppercase tracking-wider bg-white/20 px-2 py-0.5 rounded-full">Grade 4–5 Science</span>
+            <span class="hidden md:inline text-xs font-semibold text-teal-100">Unit 2: Energy • Section 2.4</span>
+          </div>
+          <h1 class="text-base sm:text-xl font-bold tracking-wide leading-tight">Living Science Book: Energy &amp; Living Things</h1>
+        </div>
+      </div>
+
+      <!-- Page Navigation Controls -->
+      <div class="flex items-center gap-1.5 sm:gap-2 bg-slate-900/25 p-1.5 rounded-2xl border border-white/15">
+        <button id="btnPrevPage" onclick="switchPage(44)" class="btn-tactile px-2.5 sm:px-3 py-1.5 rounded-xl bg-white/15 hover:bg-white/25 disabled:opacity-40 disabled:pointer-events-none text-xs sm:text-sm font-bold flex items-center gap-1" title="Previous Page">
+          <span>◀</span> <span class="hidden sm:inline">Prev</span>
+        </button>
+
+        <select id="pageSelector" onchange="switchPage(Number(this.value))" aria-label="Select Textbook Page" class="bg-white text-slate-800 font-bold text-xs sm:text-sm rounded-xl px-2.5 sm:px-3 py-1.5 cursor-pointer focus:outline-none focus:ring-2 focus:ring-amber-400">
+          <option value="44">Page 44: Animals Need Plants for Energy</option>
+          <option value="45">Page 45: Food Chains</option>
+        </select>
+
+        <button id="btnNextPage" onclick="switchPage(45)" class="btn-tactile px-2.5 sm:px-3 py-1.5 rounded-xl bg-white/15 hover:bg-white/25 disabled:opacity-40 disabled:pointer-events-none text-xs sm:text-sm font-bold flex items-center gap-1" title="Next Page">
+          <span class="hidden sm:inline">Next</span> <span>▶</span>
+        </button>
+      </div>
+
+      <!-- Progress Badge & Teacher Reset -->
+      <div class="flex items-center gap-2">
+        <button id="badgeHeaderBtn" onclick="openBadgeModal()" class="hidden sm:flex items-center gap-1.5 bg-amber-400/20 hover:bg-amber-400/30 border border-amber-300/40 px-3 py-1.5 rounded-xl text-xs font-bold text-amber-100 transition">
+          <span>⭐</span>
+          <span id="headerProgressText">0 / 6 Tasks</span>
+        </button>
+
+        <button onclick="openTeacherResetModal()" class="btn-tactile bg-rose-600 hover:bg-rose-500 text-white text-xs sm:text-sm font-bold px-3 py-1.5 rounded-xl flex items-center gap-1.5 border border-rose-400/40" title="Reset simulation and student answers for the next class">
+          <span>👩‍🏫</span>
+          <span class="hidden md:inline">Teacher Mode / Reset All</span>
+          <span class="md:hidden">Reset</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN SPLIT-SCREEN BOOK WORKSPACE -->
+  <main class="flex-1 max-w-[1600px] w-full mx-auto p-3 sm:p-5 grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5 items-start">
+
+    <!-- LEFT PANEL: INTERACTIVE TEXTBOOK PAGE (5 Columns on Large Screens) -->
+    <section class="lg:col-span-5 bg-bookPaper rounded-3xl shadow-xl border-2 border-amber-200/80 overflow-hidden flex flex-col relative">
+      <!-- Book Spine / Top Ribbon -->
+      <div class="bg-gradient-to-r from-amber-100 via-orange-50 to-amber-100 border-b border-amber-200 px-5 py-3 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="inline-flex items-center px-3 py-0.5 rounded-r-full border-2 border-sky-500 text-sky-700 font-bold text-xs bg-white">
+            2 Energy
+          </span>
+          <span class="text-xs font-extrabold text-rose-600">2.4 Energy and living things</span>
+        </div>
+        <span id="pageBadgeNumber" class="bg-slate-800 text-white text-xs font-bold px-2.5 py-1 rounded-lg">Page 44</span>
+      </div>
+
+      <!-- Interactive Hint Banner -->
+      <div class="bg-sky-50 border-b border-sky-100 px-5 py-2 flex items-center justify-between text-xs text-sky-800 font-semibold">
+        <span>💡 Tap any <strong class="text-orange-600 underline decoration-dotted">orange word</strong> for a picture definition!</span>
+        <button onclick="speakCurrentPage()" id="btnReadAloud" class="bg-sky-600 hover:bg-sky-700 text-white px-2.5 py-1 rounded-lg font-bold flex items-center gap-1 shadow-sm transition">
+          <span>🔊</span> <span>Read Page</span>
+        </button>
+      </div>
+
+      <!-- PAGE 44 TEXTBOOK CONTENT -->
+      <article id="textbookPage44" class="p-5 sm:p-6 space-y-4 text-base sm:text-[17px] leading-relaxed text-slate-800">
+        <div class="flex flex-col sm:flex-row gap-4 items-start">
+          <div class="flex-1 space-y-3">
+            <h2 class="text-2xl sm:text-3xl font-bold text-rose-600 tracking-tight">Animals need plants for energy</h2>
+            <p>
+              Animals including humans cannot make their food. They must eat, or consume, plants or other animals to get their food and energy. Animals including humans are called
+              <button type="button" class="vocab-term" onclick="showVocab('consumers')">consumers</button>.
+            </p>
+            <p>
+              Some animals eat plants only. We call animals that eat only plants
+              <button type="button" class="vocab-term" onclick="showVocab('herbivores')">herbivores</button>.
+              Zebras and snails are examples of herbivores.
+            </p>
+          </div>
+          <!-- Illustrated Tiger Card (Matching Page 44 Photo) -->
+          <div class="w-full sm:w-36 shrink-0 bg-gradient-to-b from-amber-200 to-emerald-200 p-2 rounded-2xl border-2 border-amber-300 shadow-sm text-center">
+            <div class="bg-white/90 rounded-xl p-2 flex flex-col items-center">
+              <span class="text-5xl drop-shadow-sm" role="img" aria-label="Tiger">🐯</span>
+              <span class="mt-1 text-xs font-extrabold text-amber-900 uppercase tracking-wide">Tiger</span>
+              <span class="text-[11px] font-bold text-rose-700 bg-rose-100 px-2 py-0.5 rounded-full mt-0.5">Carnivore &amp; Predator</span>
+            </div>
+          </div>
+        </div>
+
+        <p>
+          Some animals eat other animals that eat plants. We call these animals
+          <button type="button" class="vocab-term" onclick="showVocab('carnivores')">carnivores</button>.
+          Carnivores eat herbivores. They also sometimes eat other carnivores. Tigers and owls are examples of carnivores.
+        </p>
+
+        <p>
+          Sometimes carnivores are called
+          <button type="button" class="vocab-term" onclick="showVocab('predators')">predators</button>.
+          The animals that carnivores kill and eat are called
+          <button type="button" class="vocab-term" onclick="showVocab('prey')">prey</button>.
+          For example, an owl that kills and eats a mouse is a predator. The mouse is the prey.
+        </p>
+
+        <p>
+          Animals that eat both plants and animals are called
+          <button type="button" class="vocab-term" onclick="showVocab('omnivores')">omnivores</button>.
+          For example, monkeys mostly eat plant leaves, fruits and seeds, but they also eat insects and other small animals.
+        </p>
+
+        <!-- Savanna Zebras Banner (Matching bottom of Page 44) -->
+        <div class="bg-gradient-to-r from-emerald-100 via-lime-100 to-amber-100 rounded-2xl p-3 border border-emerald-300 flex items-center justify-between gap-3">
+          <div class="flex items-center gap-2 text-3xl">
+            <span>🌿</span><span>🦓</span><span>🦓</span><span>🌿</span>
+          </div>
+          <p class="text-xs sm:text-sm font-bold text-emerald-900">
+            Zebras graze on savanna grass — they are <span class="underline">herbivores</span>!
+          </p>
+        </div>
+
+        <!-- Original Textbook Questions Accordion (Page 44) -->
+        <div class="pt-2 border-t-2 border-amber-200/80">
+          <button onclick="toggleBookQuestions('q44')" class="w-full flex items-center justify-between bg-rose-50 hover:bg-rose-100 text-rose-700 font-display font-bold text-lg px-4 py-2.5 rounded-2xl border border-rose-200 transition">
+            <span>❓ Textbook Questions (Page 44) — Self-Check</span>
+            <span id="icon-q44" class="text-sm bg-rose-600 text-white px-2.5 py-0.5 rounded-full">Show Hints ▼</span>
+          </button>
+          <div id="panel-q44" class="hidden mt-3 space-y-2.5 bg-white p-4 rounded-2xl border border-slate-200 text-sm">
+            <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
+              <p class="font-bold text-slate-900">1. Why are plants called producers?</p>
+              <button onclick="revealHint(this)" class="mt-1 text-xs font-bold text-sky-700 hover:underline">Tap to reveal answer ▶</button>
+              <p class="hidden mt-1 text-emerald-700 font-semibold">✅ Because plants make (produce) their own food using energy from sunlight!</p>
+            </div>
+            <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
+              <p class="font-bold text-slate-900">2. Why are animals called consumers?</p>
+              <button onclick="revealHint(this)" class="mt-1 text-xs font-bold text-sky-700 hover:underline">Tap to reveal answer ▶</button>
+              <p class="hidden mt-1 text-emerald-700 font-semibold">✅ Because animals cannot make their own food; they must eat (consume) plants or other animals to get energy.</p>
+            </div>
+            <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200 space-y-1.5">
+              <p class="font-bold text-slate-900">3a. What is the difference between predators and prey? Give an example.</p>
+              <p class="font-bold text-slate-900">3b. In what way are predators and prey similar?</p>
+              <p class="font-bold text-slate-900">3c. Can a herbivore be a predator? Say why or why not.</p>
+              <button onclick="revealHint(this)" class="mt-1 text-xs font-bold text-sky-700 hover:underline">Tap to reveal answers ▶</button>
+              <div class="hidden mt-1 text-emerald-700 font-semibold space-y-1">
+                <p>✅ <strong>3a:</strong> A predator hunts and eats other animals (e.g., an owl). Prey is the animal hunted and eaten (e.g., a mouse).</p>
+                <p>✅ <strong>3b:</strong> Both predators and prey are animals and both are consumers!</p>
+                <p>✅ <strong>3c:</strong> No, because herbivores only eat plants—they do not hunt or eat other animals.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- PAGE 45 TEXTBOOK CONTENT -->
+      <article id="textbookPage45" class="hidden p-5 sm:p-6 space-y-4 text-base sm:text-[17px] leading-relaxed text-slate-800">
+        <div class="flex flex-col sm:flex-row gap-4 items-start">
+          <div class="flex-1 space-y-3">
+            <h2 class="text-2xl sm:text-3xl font-bold text-rose-600 tracking-tight">Food chains</h2>
+            <p>
+              A <button type="button" class="vocab-term" onclick="showVocab('food chain')">food chain</button>
+              shows the order in which animals eat plants and other animals to get energy. Food chains always contain a
+              <button type="button" class="vocab-term" onclick="showVocab('producer')">producer</button>
+              and at least one <button type="button" class="vocab-term" onclick="showVocab('consumers')">consumer</button>.
+              Energy is always transferred from the producer to the consumer because the consumer eats the producer. Look at the examples.
+            </p>
+          </div>
+          <!-- Visual Book Examples 1 & 2 Cards -->
+          <div class="w-full sm:w-44 shrink-0 space-y-2">
+            <div class="bg-amber-100 border-2 border-amber-300 rounded-2xl p-2.5 shadow-sm">
+              <div class="flex items-center justify-between">
+                <span class="bg-slate-800 text-white text-[11px] font-bold w-5 h-5 rounded-full flex items-center justify-center">1</span>
+                <span class="text-xs font-extrabold text-amber-900">Example 1</span>
+              </div>
+              <div class="text-center text-2xl my-1">🌽 ➡️ 🐔</div>
+              <p class="text-[11px] text-center font-bold text-amber-950">Hen pecking corn seeds</p>
+            </div>
+            <div class="bg-emerald-100 border-2 border-emerald-300 rounded-2xl p-2.5 shadow-sm">
+              <div class="flex items-center justify-between">
+                <span class="bg-slate-800 text-white text-[11px] font-bold w-5 h-5 rounded-full flex items-center justify-center">2</span>
+                <span class="text-xs font-extrabold text-emerald-900">Example 2</span>
+              </div>
+              <div class="text-center text-2xl my-1">🌱 ➡️ 🐐</div>
+              <p class="text-[11px] text-center font-bold text-emerald-950">Goat eating green grass</p>
+            </div>
+          </div>
+        </div>
+
+        <p>
+          In food chain 1, the <strong>corn</strong> is the producer and the <strong>hen</strong> is the consumer.<br />
+          Identify the producer and the consumer in food chain 2.
+        </p>
+
+        <p>
+          We can show a food chain as a drawing. When we draw a food chain, we show the order in which food, and the energy it contains, are transferred from one living thing to the next. The order of living things in a food chain is always:
+        </p>
+
+        <div class="bg-amber-50 border-2 border-amber-300 rounded-2xl py-2.5 px-4 text-center font-display font-bold text-lg sm:text-xl text-slate-900 shadow-inner">
+          producer <span class="text-orange-600 mx-2">➔</span> consumer
+        </div>
+
+        <p>
+          The <strong>arrows</strong> in the food chain show the direction in which the energy in the food is transferred.<br />
+          This is the drawing of food chain 1:
+        </p>
+
+        <div class="bg-sky-50 border-2 border-sky-200 rounded-2xl py-2 px-4 text-center font-display font-bold text-lg text-sky-950">
+          corn <span class="text-orange-600 mx-2">➔</span> hen
+        </div>
+
+        <p>
+          If a boy eats the hen in food chain 1, he is another consumer. So now the food chain is:
+        </p>
+
+        <div class="bg-emerald-50 border-2 border-emerald-200 rounded-2xl py-2 px-4 text-center font-display font-bold text-lg text-emerald-950">
+          corn <span class="text-orange-600 mx-2">➔</span> hen <span class="text-orange-600 mx-2">➔</span> boy
+        </div>
+
+        <!-- Original Textbook Check (Page 45) -->
+        <div class="pt-2 border-t-2 border-amber-200/80">
+          <button onclick="toggleBookQuestions('q45')" class="w-full flex items-center justify-between bg-rose-50 hover:bg-rose-100 text-rose-700 font-display font-bold text-lg px-4 py-2.5 rounded-2xl border border-rose-200 transition">
+            <span>❓ Textbook Check (Page 45) — Self-Check</span>
+            <span id="icon-q45" class="text-sm bg-rose-600 text-white px-2.5 py-0.5 rounded-full">Show Hints ▼</span>
+          </button>
+          <div id="panel-q45" class="hidden mt-3 space-y-2.5 bg-white p-4 rounded-2xl border border-slate-200 text-sm">
+            <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
+              <p class="font-bold text-slate-900">1. Identify the producer and the consumer in food chain 2 (Grass &amp; Goat).</p>
+              <button onclick="revealHint(this)" class="mt-1 text-xs font-bold text-sky-700 hover:underline">Tap to reveal answer ▶</button>
+              <p class="hidden mt-1 text-emerald-700 font-semibold">✅ The <strong>grass</strong> is the producer, and the <strong>goat</strong> is the consumer (grass ➔ goat).</p>
+            </div>
+            <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
+              <p class="font-bold text-slate-900">2. What do the arrows in a food chain show?</p>
+              <button onclick="revealHint(this)" class="mt-1 text-xs font-bold text-sky-700 hover:underline">Tap to reveal answer ▶</button>
+              <p class="hidden mt-1 text-emerald-700 font-semibold">✅ The arrows show the direction in which food and energy move from one living thing to the next.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- RIGHT PANEL: INTERACTIVE SIMULATION & LAB NOTEBOOK (7 Columns on Large Screens) -->
+    <section class="lg:col-span-7 space-y-4 sm:space-y-5">
+
+      <!-- FOOD CHAIN ARRANGEMENT LAB CARD -->
+      <div class="bg-white rounded-3xl shadow-xl border-2 border-sky-200 overflow-hidden">
+        <!-- Simulation Header -->
+        <div class="bg-gradient-to-r from-sky-600 via-teal-600 to-emerald-600 text-white px-5 py-3 flex flex-wrap items-center justify-between gap-2">
+          <div class="flex items-center gap-2.5">
+            <span class="bg-white/20 p-1.5 rounded-xl text-lg">🔗</span>
+            <div>
+              <h2 id="simTitle" class="font-display font-bold text-lg sm:text-xl leading-tight">Food Chain Arrangement &amp; Energy Flow Lab</h2>
+              <p id="simSubtitle" class="text-xs text-sky-100 font-medium">Drag or tap cards into order (Producer ➔ Consumer), then test energy transfer!</p>
+            </div>
+          </div>
+          <!-- Live Chain Validation Status Pill -->
+          <div class="bg-slate-900/30 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1.5 border border-white/20">
+            <span id="simStatusDot" class="w-2.5 h-2.5 rounded-full bg-amber-300"></span>
+            <span id="simEventBanner">Tap any living thing to hear it talk!</span>
+          </div>
+        </div>
+
+        <!-- CHALLENGE SELECTOR & ORGANISM TRAY CONTROLS -->
+        <div class="bg-slate-50 border-b border-slate-200 p-3 sm:p-4 space-y-3">
+          <!-- 1. Food Chain Challenge Tabs -->
+          <div>
+            <div class="flex items-center justify-between mb-1.5 flex-wrap gap-1">
+              <span class="text-xs font-extrabold uppercase tracking-wider text-slate-500">1. Choose a Food Chain Challenge:</span>
+              <span id="chainProgressBadge" class="text-xs font-extrabold text-emerald-700 bg-emerald-100 px-2.5 py-0.5 rounded-full border border-emerald-300">
+                Chains Solved: 0 / 6
+              </span>
+            </div>
+            <div id="challengeTabsContainer" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-1.5">
+              <!-- Populated dynamically with the 6 food chain challenges -->
+            </div>
+          </div>
+
+          <!-- 2. Shuffled Organism Tray (Drag-and-Drop + Tap-to-Place) -->
+          <div class="bg-amber-50/90 border-2 border-amber-300/90 rounded-2xl p-2.5 sm:p-3 space-y-2">
+            <div class="flex items-center justify-between flex-wrap gap-2">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs font-extrabold uppercase tracking-wider text-amber-900">2. Organism Tray:</span>
+                <span class="text-xs font-semibold text-amber-800">(Tap character to hear it talk, or drag/tap to place in slot!)</span>
+              </div>
+              <div class="flex items-center gap-1.5 flex-wrap">
+                <button id="btnVoiceToggle" onclick="toggleCharacterVoice()" class="btn-tactile px-2.5 py-1 rounded-lg text-xs font-extrabold bg-sky-600 border border-sky-800 text-white hover:bg-sky-700">
+                  🔊 Voice: ON
+                </button>
+                <button id="btnToggleHints" onclick="toggleRoleHints()" class="btn-tactile px-2.5 py-1 rounded-lg text-xs font-extrabold bg-white border border-amber-300 text-amber-900 hover:bg-amber-100">
+                  🏷️ Role Hints: OFF
+                </button>
+                <button onclick="shuffleCurrentTray()" class="btn-tactile px-2.5 py-1 rounded-lg text-xs font-extrabold bg-white border border-slate-300 text-slate-700 hover:bg-slate-100">
+                  🔀 Shuffle
+                </button>
+                <button onclick="clearChainSlots()" class="btn-tactile px-2.5 py-1 rounded-lg text-xs font-extrabold bg-white border border-rose-300 text-rose-700 hover:bg-rose-50">
+                  🧹 Clear Slots
+                </button>
+              </div>
+            </div>
+
+            <!-- Interactive Organism Cards -->
+            <div id="organismTray" class="flex flex-wrap items-center gap-2 min-h-[76px]">
+              <!-- Populated dynamically -->
+            </div>
+          </div>
+
+          <!-- 3. Simulation & Experiment Action Bar -->
+          <div class="flex flex-wrap items-center justify-between gap-2 pt-0.5">
+            <div class="flex flex-wrap items-center gap-2">
+              <div class="flex items-center gap-1.5 bg-white px-2.5 py-1.5 rounded-xl border border-slate-200">
+                <label for="sunSlider" class="text-xs font-extrabold text-amber-700">☀️ Sunlight:</label>
+                <input id="sunSlider" type="range" min="20" max="100" step="10" value="80" oninput="updateSunPower(this.value)" class="w-20 sm:w-24 accent-amber-500 cursor-pointer" />
+                <span id="sunValLabel" class="text-xs font-extrabold text-amber-800 w-8">80%</span>
+              </div>
+
+              <button id="btnSlowMo" onclick="toggleSlowMotion()" class="btn-tactile px-2.5 py-1.5 rounded-xl text-xs font-extrabold bg-white border border-slate-300 text-slate-700 hover:bg-slate-100">
+                🐢 Slow-Mo: OFF
+              </button>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-2">
+              <button id="btnRemoveProducer" onclick="toggleRemoveProducer()" class="btn-tactile px-3 py-1.5 rounded-xl text-xs font-extrabold bg-rose-100 hover:bg-rose-200 border border-rose-400 text-rose-800">
+                🚫 Remove Producer
+              </button>
+              <button onclick="hearChainStory()" class="btn-tactile px-3 py-1.5 rounded-xl text-xs font-extrabold bg-amber-400 hover:bg-amber-500 border border-amber-600 text-slate-950 flex items-center gap-1">
+                <span>💬</span> <span>Hear Chain Story</span>
+              </button>
+              <button onclick="testFoodChain()" class="btn-tactile px-4 py-1.5 rounded-xl text-xs sm:text-sm font-display font-bold bg-emerald-600 hover:bg-emerald-700 text-white flex items-center gap-1.5 shadow-md">
+                <span>⚡</span> <span>Test Food Chain!</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- HTML5 INTERACTIVE ARRANGEMENT CANVAS CONTAINER -->
+        <div id="canvasContainer" class="relative w-full h-[380px] sm:h-[420px] bg-gradient-to-b from-sky-100 to-emerald-50 select-none">
+          <canvas id="scienceCanvas" class="w-full h-full block cursor-pointer"></canvas>
+
+          <!-- Floating Feedback & Character Speech Banner (Bottom of Canvas) -->
+          <div id="inspectorOverlay" class="absolute bottom-3 left-3 right-3 bg-white/95 backdrop-blur-sm border-2 border-sky-300 rounded-2xl p-2.5 sm:p-3 shadow-lg flex items-center justify-between gap-3">
+            <div class="flex items-center gap-3 min-w-0">
+              <div id="inspectorIcon" class="w-12 h-12 rounded-xl bg-amber-100 border border-amber-300 flex items-center justify-center shrink-0 overflow-hidden"></div>
+              <div class="min-w-0">
+                <div class="flex items-center gap-1.5 flex-wrap">
+                  <span id="inspectorName" class="font-display font-bold text-sm sm:text-base text-slate-900">Challenge 1: Farm Food Chain (Book p. 45)</span>
+                  <span id="inspectorBadge" class="text-[11px] font-extrabold px-2 py-0.5 rounded-full bg-sky-100 text-sky-800">3 Slots</span>
+                </div>
+                <p id="inspectorDesc" class="text-xs sm:text-sm text-slate-700 font-semibold leading-snug">
+                  Tap any living thing to hear it introduce itself, then arrange Producer ➔ Consumer and tap <strong>Test Food Chain!</strong>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- GUIDED OBSERVATION & LAB NOTEBOOK PANEL -->
+      <div class="bg-white rounded-3xl shadow-xl border-2 border-amber-300 overflow-hidden">
+        <!-- Notebook Header & Step Tabs -->
+        <div class="bg-gradient-to-r from-amber-500 to-orange-500 text-white px-5 py-3 flex flex-wrap items-center justify-between gap-2">
+          <div class="flex items-center gap-2">
+            <span class="text-xl">📓</span>
+            <h3 class="font-display font-bold text-lg sm:text-xl">Lab Notebook: Food Chain Observation Check</h3>
+          </div>
+
+          <!-- 3-Step Scientific Method Tabs -->
+          <div class="flex items-center gap-1.5 bg-black/15 p-1 rounded-xl">
+            <button id="tabStep1" onclick="selectNotebookStep(1)" class="px-3 py-1 rounded-lg text-xs font-extrabold bg-white text-orange-700 shadow-sm transition">
+              1. Predict <span id="check-s1"></span>
+            </button>
+            <button id="tabStep2" onclick="selectNotebookStep(2)" class="px-3 py-1 rounded-lg text-xs font-extrabold text-white hover:bg-white/20 transition">
+              2. Observe <span id="check-s2"></span>
+            </button>
+            <button id="tabStep3" onclick="selectNotebookStep(3)" class="px-3 py-1 rounded-lg text-xs font-extrabold text-white hover:bg-white/20 transition">
+              3. Explain (CER) <span id="check-s3"></span>
+            </button>
+          </div>
+        </div>
+
+        <!-- NOTEBOOK BODY (Dynamic per Page & Step) -->
+        <div id="notebookContent" class="p-4 sm:p-6">
+          <!-- Populated dynamically via JS for Page 44 or Page 45 -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- VOCABULARY POP-UP MODAL -->
+  <div id="vocabModal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4" onclick="if(event.target===this) closeVocab()">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 border-4 border-amber-400 shadow-2xl animate-pop space-y-4">
+      <div class="flex items-start justify-between gap-3">
+        <div class="flex items-center gap-3">
+          <div id="vocabEmoji" class="text-4xl bg-amber-100 w-14 h-14 rounded-2xl flex items-center justify-center border-2 border-amber-300">🌿</div>
+          <div>
+            <span class="text-xs font-extrabold uppercase tracking-wider text-orange-600">Science Vocabulary</span>
+            <h3 id="vocabTitle" class="font-display font-bold text-2xl text-slate-900 capitalize">Consumer</h3>
+          </div>
+        </div>
+        <button onclick="closeVocab()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 w-9 h-9 rounded-full font-bold flex items-center justify-center">✕</button>
+      </div>
+
+      <p id="vocabDef" class="text-base text-slate-700 font-semibold leading-relaxed bg-amber-50/70 p-3.5 rounded-2xl border border-amber-200"></p>
+
+      <div class="bg-sky-50 p-3 rounded-2xl border border-sky-200 flex items-center gap-2.5">
+        <span class="text-xl">🔎</span>
+        <p id="vocabExample" class="text-sm font-bold text-sky-950"></p>
+      </div>
+
+      <div class="flex justify-end">
+        <button onclick="closeVocab()" class="btn-tactile bg-teal-600 hover:bg-teal-700 text-white font-bold px-5 py-2 rounded-xl text-sm">
+          Got it! 👍
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TEACHER RESET CONFIRMATION MODAL (No window.confirm used!) -->
+  <div id="teacherResetModal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4" onclick="if(event.target===this) closeTeacherResetModal()">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 border-4 border-rose-400 shadow-2xl animate-pop space-y-4">
+      <div class="flex items-center gap-3">
+        <span class="text-4xl">👩‍🏫</span>
+        <div>
+          <h3 class="font-display font-bold text-xl text-slate-900">Teacher Mode: Reset Classroom Session?</h3>
+          <p class="text-xs font-bold text-rose-600">Prepare the Living Science Book for the next group</p>
+        </div>
+      </div>
+      <p class="text-sm text-slate-700 font-semibold">
+        This will reset both simulations, clear all student Lab Notebook answers, and reset the star badge progress back to 0.
+      </p>
+      <div class="flex justify-end gap-2 pt-2">
+        <button onclick="closeTeacherResetModal()" class="px-4 py-2 rounded-xl text-sm font-bold bg-slate-100 hover:bg-slate-200 text-slate-700">
+          Cancel
+        </button>
+        <button onclick="executeFullReset()" class="btn-tactile px-4 py-2 rounded-xl text-sm font-bold bg-rose-600 hover:bg-rose-700 text-white">
+          🔄 Yes, Reset Everything
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CELEBRATORY JUNIOR ECOLOGIST BADGE MODAL -->
+  <div id="badgeModal" class="hidden fixed inset-0 z-50 bg-slate-900/65 backdrop-blur-xs flex items-center justify-center p-4" onclick="if(event.target===this) closeBadgeModal()">
+    <div class="bg-gradient-to-b from-amber-50 to-white rounded-3xl max-w-md w-full p-6 border-4 border-amber-400 shadow-2xl animate-pop text-center space-y-4">
+      <div class="text-6xl mx-auto animate-bounce">🏆</div>
+      <span class="inline-block bg-amber-400 text-slate-900 text-xs font-extrabold uppercase tracking-wider px-3 py-1 rounded-full">
+        Unit 2 Science Achievement
+      </span>
+      <h3 id="badgeModalTitle" class="font-display font-bold text-2xl sm:text-3xl text-slate-900">Junior Ecologist Progress</h3>
+      <p id="badgeModalDesc" class="text-sm sm:text-base text-slate-700 font-semibold">
+        Complete all Predict, Observe, and Explain tasks on Page 44 and Page 45 to earn your official Junior Ecologist Star Badge!
+      </p>
+      <div class="bg-white rounded-2xl p-3 border border-amber-200 grid grid-cols-2 gap-2 text-xs font-bold">
+        <div class="p-2 rounded-xl bg-sky-50 text-sky-900">
+          Page 44 Lab: <span id="badgeP44Status" class="text-orange-600">In Progress</span>
+        </div>
+        <div class="p-2 rounded-xl bg-emerald-50 text-emerald-900">
+          Page 45 Lab: <span id="badgeP45Status" class="text-orange-600">In Progress</span>
+        </div>
+      </div>
+      <button onclick="closeBadgeModal()" class="btn-tactile w-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-display font-bold text-lg py-2.5 rounded-2xl">
+        Keep Exploring! 🚀
+      </button>
+    </div>
+  </div>
+
+  <!-- APPLICATION LOGIC & SIMULATION ENGINE -->
+  <script>
+    /* =========================================================================
+       1. WEB AUDIO API SOUND EFFECTS (Self-Contained, Zero External MP3s)
+       ========================================================================= */
+    const SoundFX = (() => {
+      let audioCtx = null;
+      function getCtx() {
+        if (!audioCtx) {
+          const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+          if (AudioContextClass) audioCtx = new AudioContextClass();
+        }
+        if (audioCtx && audioCtx.state === 'suspended') {
+          audioCtx.resume().catch(() => {});
+        }
+        return audioCtx;
+      }
+
+      function playTone(freq, type = 'sine', duration = 0.14, gainVal = 0.12, delay = 0) {
+        try {
+          const c = getCtx();
+          if (!c) return;
+          const osc = c.createOscillator();
+          const gain = c.createGain();
+          osc.type = type;
+          osc.frequency.setValueAtTime(freq, c.currentTime + delay);
+          gain.gain.setValueAtTime(gainVal, c.currentTime + delay);
+          gain.gain.exponentialRampToValueAtTime(0.001, c.currentTime + delay + duration);
+          osc.connect(gain);
+          gain.connect(c.destination);
+          osc.start(c.currentTime + delay);
+          osc.stop(c.currentTime + delay + duration + 0.02);
+        } catch (e) { /* Safe fallback if audio blocked */ }
+      }
+
+      return {
+        popClick() {
+          playTone(540, 'triangle', 0.08, 0.1);
+        },
+        chimeSuccess() {
+          playTone(523.25, 'sine', 0.15, 0.13, 0);
+          playTone(659.25, 'sine', 0.15, 0.13, 0.09);
+          playTone(783.99, 'sine', 0.25, 0.15, 0.18);
+        },
+        nudgeWrong() {
+          playTone(230, 'sawtooth', 0.16, 0.09, 0);
+          playTone(195, 'sawtooth', 0.2, 0.09, 0.11);
+        },
+        celebrateBadge() {
+          [523.25, 659.25, 783.99, 1046.5].forEach((f, i) => {
+            playTone(f, 'triangle', 0.22, 0.14, i * 0.1);
+          });
+        }
+      };
+    })();
+
+    /* =========================================================================
+       2. GLOBAL APPLICATION STATE & VOCABULARY DICTIONARY
+       ========================================================================= */
+    const state = {
+      currentPage: 45,
+      notebookStep: 1,
+      celebratedAll: false,
+      progress: {
+        p44_s1: false,
+        p44_s2: false,
+        p44_s3: false,
+        p45_s1: false,
+        p45_s2: false,
+        p45_s3: false
+      },
+      answers: {
+        p44_predict: null,
+        p44_sort: {},
+        p44_selectedAnimal: null,
+        p44_cer: { claim: '', evidence: '', reasoning: '' },
+        p45_predict: null,
+        p45_qc1: '',
+        p45_qc2: '',
+        p45_blanks: { b1: '', b2: '', b3: '', b4: '' },
+        p45_activeBlank: 'b1',
+        p45_cer: { claim: '', evidence: '', reasoning: '' }
+      }
+    };
+
+    const VOCAB_DATA = {
+      consumers: {
+        emoji: '🦁',
+        title: 'Consumers',
+        def: 'Living things (like animals and humans) that cannot make their own food. They must eat, or consume, plants or other animals to get energy.',
+        example: 'Example: Zebras, hens, monkeys, tigers, and humans are all consumers.'
+      },
+      herbivores: {
+        emoji: '🦓',
+        title: 'Herbivores',
+        def: 'Animals that eat ONLY plants to get their food and energy.',
+        example: 'Example: Zebras, goats, and snails are herbivores.'
+      },
+      carnivores: {
+        emoji: '🦉',
+        title: 'Carnivores',
+        def: 'Animals that eat other animals (herbivores or even other carnivores) to get their energy.',
+        example: 'Example: Tigers and owls are carnivores.'
+      },
+      predators: {
+        emoji: '🐯',
+        title: 'Predators',
+        def: 'Carnivores that hunt, kill, and eat other animals for food.',
+        example: 'Example: An owl hunting a mouse is a predator.'
+      },
+      prey: {
+        emoji: '🐭',
+        title: 'Prey',
+        def: 'Animals that are hunted, killed, and eaten by predators.',
+        example: 'Example: When an owl eats a mouse, the mouse is the prey.'
+      },
+      omnivores: {
+        emoji: '🐒',
+        title: 'Omnivores',
+        def: 'Animals that eat BOTH plants and other animals.',
+        example: 'Example: Monkeys eat fruits, leaves, and seeds, plus insects and small animals.'
+      },
+      'food chain': {
+        emoji: '🔗',
+        title: 'Food Chain',
+        def: 'A diagram or order showing how animals eat plants and other animals to transfer energy from one living thing to the next.',
+        example: 'Example: corn ➔ hen ➔ boy'
+      },
+      producer: {
+        emoji: '🌽',
+        title: 'Producer',
+        def: 'A green plant that makes (produces) its own food using energy from sunlight. Every food chain starts with a producer!',
+        example: 'Example: Corn and grass are producers.'
+      }
+    };
+
+    /* =========================================================================
+       3. VOCABULARY POPUP, TEXTBOOK ACCORDIONS & READ-ALOUD
+       ========================================================================= */
+    function showVocab(key) {
+      SoundFX.popClick();
+      const item = VOCAB_DATA[key];
+      if (!item) return;
+      document.getElementById('vocabEmoji').textContent = item.emoji;
+      document.getElementById('vocabTitle').textContent = item.title;
+      document.getElementById('vocabDef').textContent = item.def;
+      document.getElementById('vocabExample').textContent = item.example;
+      document.getElementById('vocabModal').classList.remove('hidden');
+    }
+
+    function closeVocab() {
+      document.getElementById('vocabModal').classList.add('hidden');
+    }
+
+    function toggleBookQuestions(id) {
+      SoundFX.popClick();
+      const panel = document.getElementById('panel-' + id);
+      const icon = document.getElementById('icon-' + id);
+      const isHidden = panel.classList.contains('hidden');
+      panel.classList.toggle('hidden');
+      icon.textContent = isHidden ? 'Hide Hints ▲' : 'Show Hints ▼';
+    }
+
+    function revealHint(btn) {
+      SoundFX.chimeSuccess();
+      const ans = btn.nextElementSibling;
+      if (ans) ans.classList.remove('hidden');
+      btn.classList.add('hidden');
+    }
+
+    function speakCurrentPage() {
+      SoundFX.popClick();
+      if (!('speechSynthesis' in window)) return;
+      window.speechSynthesis.cancel();
+      const article = document.getElementById(state.currentPage === 44 ? 'textbookPage44' : 'textbookPage45');
+      const text = Array.from(article.querySelectorAll('h2, p'))
+        .slice(0, 6)
+        .map(el => el.innerText)
+        .join(' ');
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = 'en-US';
+      const clearVoice = getClearEnglishVoice();
+      if (clearVoice) utter.voice = clearVoice;
+      utter.rate = 0.92;
+      window.speechSynthesis.speak(utter);
+    }
+
+    function getClearEnglishVoice() {
+      if (!('speechSynthesis' in window)) return null;
+      const voices = window.speechSynthesis.getVoices() || [];
+      return (
+        voices.find(v => v.lang === 'en-US' && (v.name.includes('Google') || v.name.includes('Natural') || v.name.includes('Samantha') || v.name.includes('Microsoft'))) ||
+        voices.find(v => v.lang.startsWith('en-US')) ||
+        voices.find(v => v.lang.startsWith('en-GB')) ||
+        voices.find(v => v.lang.startsWith('en')) ||
+        null
+      );
+    }
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.onvoiceschanged = getClearEnglishVoice;
+    }
+
+    /* =========================================================================
+       4. BOOK PAGE NAVIGATION & PROGRESS BADGE UPDATES
+       ========================================================================= */
+    function switchPage(pageNum) {
+      SoundFX.popClick();
+      state.currentPage = pageNum;
+      document.getElementById('pageSelector').value = String(pageNum);
+      document.getElementById('pageBadgeNumber').textContent = `Page ${pageNum}`;
+
+      document.getElementById('textbookPage44').classList.toggle('hidden', pageNum !== 44);
+      document.getElementById('textbookPage45').classList.toggle('hidden', pageNum !== 45);
+
+      document.getElementById('btnPrevPage').disabled = (pageNum === 44);
+      document.getElementById('btnNextPage').disabled = (pageNum === 45);
+
+      renderNotebook();
+      updateProgressUI();
+    }
+
+    function selectNotebookStep(step) {
+      SoundFX.popClick();
+      state.notebookStep = step;
+      [1, 2, 3].forEach(s => {
+        const tab = document.getElementById('tabStep' + s);
+        if (s === step) {
+          tab.className = 'px-3 py-1 rounded-lg text-xs font-extrabold bg-white text-orange-700 shadow-sm transition';
+        } else {
+          tab.className = 'px-3 py-1 rounded-lg text-xs font-extrabold text-white hover:bg-white/20 transition';
+        }
+      });
+      renderNotebook();
+    }
+
+    function updateProgressUI() {
+      const p = state.progress;
+      const doneCount = Object.values(p).filter(Boolean).length;
+      document.getElementById('headerProgressText').textContent = `${doneCount} / 6 Tasks`;
+
+      const prefix = state.currentPage === 44 ? 'p44' : 'p45';
+      document.getElementById('check-s1').textContent = p[`${prefix}_s1`] ? '✅' : '';
+      document.getElementById('check-s2').textContent = p[`${prefix}_s2`] ? '✅' : '';
+      document.getElementById('check-s3').textContent = p[`${prefix}_s3`] ? '✅' : '';
+
+      const p44Done = p.p44_s1 && p.p44_s2 && p.p44_s3;
+      const p45Done = p.p45_s1 && p.p45_s2 && p.p45_s3;
+      document.getElementById('badgeP44Status').textContent = p44Done ? 'Completed! ⭐' : 'In Progress';
+      document.getElementById('badgeP45Status').textContent = p45Done ? 'Completed! ⭐' : 'In Progress';
+
+      if (doneCount === 6 && !state.celebratedAll) {
+        state.celebratedAll = true;
+        SoundFX.celebrateBadge();
+        document.getElementById('badgeModalTitle').textContent = '🎉 Official Junior Ecologist!';
+        document.getElementById('badgeModalDesc').textContent = 'Amazing job! You mastered Producers, Consumers, Predators, Prey, and Food Chains across both textbook pages!';
+        openBadgeModal();
+      }
+    }
+
+    function openBadgeModal() {
+      document.getElementById('badgeModal').classList.remove('hidden');
+    }
+    function closeBadgeModal() {
+      document.getElementById('badgeModal').classList.add('hidden');
+    }
+
+    /* =========================================================================
+       5. INTERACTIVE LAB NOTEBOOK (PREDICT • OBSERVE • EXPLAIN CER)
+       ========================================================================= */
+    function renderNotebook() {
+      const container = document.getElementById('notebookContent');
+      const page = state.currentPage;
+      const step = state.notebookStep;
+
+      if (page === 44) {
+        if (step === 1) {
+          const chosen = state.answers.p44_predict;
+          container.innerHTML = `
+            <div class="space-y-3 animate-pop">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-extrabold uppercase tracking-wider text-orange-600">Step 1 • Prediction (Page 44)</span>
+                <span class="text-xs font-bold text-slate-500">Before building Savanna &amp; Woodland chains</span>
+              </div>
+              <p class="font-bold text-slate-900 text-base">
+                If you arrange a Savanna food chain with <strong>Grass</strong>, a <strong>Zebra</strong>, and a <strong>Tiger</strong>, which living thing must go in <strong>Slot 1</strong> to start the energy flow?
+              </p>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                ${[
+                  { id: 'tiger', label: '🐯 Tiger (Top Predator)', ok: false },
+                  { id: 'grass', label: '🌱 Grass (Producer)', ok: true },
+                  { id: 'zebra', label: '🦓 Zebra (Herbivore)', ok: false }
+                ].map(opt => `
+                  <button onclick="answerP44Predict('${opt.id}', ${opt.ok})" class="btn-tactile p-3 rounded-2xl border-2 text-left font-bold text-sm transition ${
+                    chosen === opt.id
+                      ? (opt.ok ? 'bg-emerald-50 border-emerald-500 text-emerald-900' : 'bg-rose-50 border-rose-400 text-rose-900')
+                      : 'bg-slate-50 hover:bg-amber-50 border-slate-200 text-slate-800'
+                  }">
+                    ${opt.label}
+                  </button>
+                `).join('')}
+              </div>
+              ${chosen ? `
+                <div class="p-3 rounded-2xl text-sm font-bold ${chosen === 'grass' ? 'bg-emerald-100 text-emerald-900' : 'bg-amber-100 text-amber-900'}">
+                  ${chosen === 'grass'
+                    ? '✅ Spot on! Only green plants like Grass are producers that make food from sunlight. Now test Challenge 3 in the simulation!'
+                    : '💡 Hint: Animals are consumers—they cannot make food from sunlight! Which choice is a plant producer?'}
+                </div>
+              ` : ''}
+            </div>
+          `;
+        } else if (step === 2) {
+          const animals = [
+            { id: 'zebra', label: '🦓 Zebra', target: 'herbivore' },
+            { id: 'tiger', label: '🐯 Tiger', target: 'carnivore' },
+            { id: 'monkey', label: '🐒 Monkey', target: 'omnivore' },
+            { id: 'owl', label: '🦉 Owl', target: 'carnivore' },
+            { id: 'snail', label: '🐌 Snail', target: 'herbivore' }
+          ];
+          const buckets = [
+            { id: 'herbivore', title: '🌿 Herbivores (Plants Only)', color: 'emerald' },
+            { id: 'carnivore', title: '🥩 Carnivores (Animals Only)', color: 'rose' },
+            { id: 'omnivore', title: '🥗 Omnivores (Plants & Animals)', color: 'amber' }
+          ];
+          const sel = state.answers.p44_selectedAnimal;
+          container.innerHTML = `
+            <div class="space-y-3 animate-pop">
+              <div class="flex items-center justify-between flex-wrap gap-1">
+                <span class="text-xs font-extrabold uppercase tracking-wider text-orange-600">Step 2 • Observation Sort (Page 44)</span>
+                <span class="text-xs font-bold text-slate-600">Tap an animal, then tap its consumer group!</span>
+              </div>
+              <div class="flex flex-wrap gap-2">
+                ${animals.map(a => {
+                  const placed = state.answers.p44_sort[a.id];
+                  return `
+                    <button onclick="selectSortAnimal('${a.id}')" class="btn-tactile px-3 py-1.5 rounded-xl border-2 text-xs sm:text-sm font-extrabold transition ${
+                      sel === a.id
+                        ? 'bg-sky-600 border-sky-800 text-white scale-105'
+                        : placed
+                          ? 'bg-slate-100 border-slate-300 text-slate-400'
+                          : 'bg-white border-amber-300 text-slate-900 hover:bg-amber-50'
+                    }">
+                      ${a.label} ${placed ? '✓' : ''}
+                    </button>
+                  `;
+                }).join('')}
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                ${buckets.map(b => {
+                  const itemsInBucket = animals.filter(a => state.answers.p44_sort[a.id] === b.id);
+                  return `
+                    <div onclick="dropSortAnimal('${b.id}')" class="cursor-pointer rounded-2xl border-2 border-dashed border-${b.color}-400 bg-${b.color}-50/60 p-3 min-h-[96px] hover:bg-${b.color}-100/70 transition">
+                      <div class="font-display font-bold text-xs sm:text-sm text-${b.color}-900 mb-2">${b.title}</div>
+                      <div class="flex flex-wrap gap-1.5">
+                        ${itemsInBucket.map(it => `<span class="bg-white border border-${b.color}-300 px-2 py-0.5 rounded-lg text-xs font-bold text-slate-800">${it.label} ✅</span>`).join('')}
+                      </div>
+                    </div>
+                  `;
+                }).join('')}
+              </div>
+              <div id="p44SortFeedback" class="text-xs sm:text-sm font-bold text-sky-900">
+                ${state.progress.p44_s2 ? '✅ All 5 consumers sorted accurately!' : 'Tip: Listen to each animal talk in the simulation tray if you need a clue!'}
+              </div>
+            </div>
+          `;
+        } else {
+          const cer = state.answers.p44_cer;
+          container.innerHTML = `
+            <div class="space-y-3 animate-pop">
+              <span class="text-xs font-extrabold uppercase tracking-wider text-orange-600">Step 3 • Explain with CER (Page 44)</span>
+              <p class="font-bold text-slate-900 text-sm sm:text-base">
+                Explain why an <strong>Owl</strong> and a <strong>Mouse</strong> have a predator–prey relationship:
+              </p>
+              <div class="space-y-2 text-sm">
+                <div>
+                  <label class="font-extrabold text-sky-800 block">Claim (Who is predator and who is prey?):</label>
+                  <input type="text" value="${cer.claim}" oninput="updateCER('p44', 'claim', this.value)" placeholder="In the woodland food chain, the owl is the predator and the mouse is..." class="w-full mt-1 px-3 py-2 rounded-xl border border-slate-300 font-semibold focus:outline-none focus:ring-2 focus:ring-orange-400" />
+                </div>
+                <div>
+                  <label class="font-extrabold text-emerald-800 block">Evidence (What did you observe in Challenge 4?):</label>
+                  <input type="text" value="${cer.evidence}" oninput="updateCER('p44', 'evidence', this.value)" placeholder="I observed in the simulation that the arrow goes from mouse to owl because..." class="w-full mt-1 px-3 py-2 rounded-xl border border-slate-300 font-semibold focus:outline-none focus:ring-2 focus:ring-orange-400" />
+                </div>
+                <div>
+                  <label class="font-extrabold text-amber-800 block">Reasoning (Why are both consumers?):</label>
+                  <input type="text" value="${cer.reasoning}" oninput="updateCER('p44', 'reasoning', this.value)" placeholder="Both are consumers because neither can make food from sunlight..." class="w-full mt-1 px-3 py-2 rounded-xl border border-slate-300 font-semibold focus:outline-none focus:ring-2 focus:ring-orange-400" />
+                </div>
+              </div>
+              <div class="flex items-center justify-between pt-1">
+                <span class="text-xs font-bold ${state.progress.p44_s3 ? 'text-emerald-700' : 'text-slate-500'}">
+                  ${state.progress.p44_s3 ? '✅ CER Explanation Saved!' : 'Write at least a few words in all 3 boxes to complete.'}
+                </span>
+                <button onclick="saveCER('p44')" class="btn-tactile bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm px-4 py-2 rounded-xl">
+                  Save Explanation ✓
+                </button>
+              </div>
+            </div>
+          `;
+        }
+      } else {
+        // PAGE 45 NOTEBOOK STEPS
+        if (step === 1) {
+          const chosen = state.answers.p45_predict;
+          container.innerHTML = `
+            <div class="space-y-3 animate-pop">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-extrabold uppercase tracking-wider text-orange-600">Step 1 • Prediction (Page 45)</span>
+                <span class="text-xs font-bold text-slate-500">Before testing "🚫 Remove Producer"</span>
+              </div>
+              <p class="font-bold text-slate-900 text-base">
+                In the food chain <strong>corn ➔ hen ➔ boy</strong>, what will happen to the energy flowing to the hen and the boy if we click <strong>"🚫 Remove Producer"</strong>?
+              </p>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                ${[
+                  { id: 'more', label: '⚡ The hen and boy get MORE energy', ok: false },
+                  { id: 'stops', label: '🚫 Energy stops because no plant traps sunlight', ok: true },
+                  { id: 'same', label: '🔄 Nothing changes at all', ok: false }
+                ].map(opt => `
+                  <button onclick="answerP45Predict('${opt.id}', ${opt.ok})" class="btn-tactile p-3 rounded-2xl border-2 text-left font-bold text-sm transition ${
+                    chosen === opt.id
+                      ? (opt.ok ? 'bg-emerald-50 border-emerald-500 text-emerald-900' : 'bg-rose-50 border-rose-400 text-rose-900')
+                      : 'bg-slate-50 hover:bg-amber-50 border-slate-200 text-slate-800'
+                  }">
+                    ${opt.label}
+                  </button>
+                `).join('')}
+              </div>
+              ${chosen ? `
+                <div class="p-3 rounded-2xl text-sm font-bold ${chosen === 'stops' ? 'bg-emerald-100 text-emerald-900' : 'bg-amber-100 text-amber-900'}">
+                  ${chosen === 'stops'
+                    ? '✅ Great prediction! Every food chain depends on a producer at the start. Now try clicking "🚫 Remove Producer" in the simulation above!'
+                    : '💡 Remember: Animals cannot make their own food from sunlight. What happens if the corn producer is removed?'}
+                </div>
+              ` : ''}
+            </div>
+          `;
+        } else if (step === 2) {
+          const blanks = state.answers.p45_blanks;
+          const activeB = state.answers.p45_activeBlank;
+          const wordBank = ['producer', 'consumer', 'arrows', 'energy'];
+          container.innerHTML = `
+            <div class="space-y-3 animate-pop">
+              <div class="flex items-center justify-between flex-wrap gap-1">
+                <span class="text-xs font-extrabold uppercase tracking-wider text-orange-600">Step 2 • Observation Fill-in-the-Blank (Page 45)</span>
+                <span class="text-xs font-bold text-slate-600">Tap a blank, then tap a word from the Word Bank!</span>
+              </div>
+
+              <!-- Word Bank -->
+              <div class="flex flex-wrap items-center gap-2 bg-amber-50 p-2.5 rounded-2xl border border-amber-300">
+                <span class="text-xs font-extrabold text-amber-900 uppercase">Word Bank:</span>
+                ${wordBank.map(w => `
+                  <button onclick="fillWordBlank('${w}')" class="btn-tactile bg-white hover:bg-sky-100 border-2 border-sky-300 text-sky-950 font-extrabold text-xs sm:text-sm px-3 py-1 rounded-xl">
+                    ${w}
+                  </button>
+                `).join('')}
+              </div>
+
+              <!-- Sentences with Interactive Blanks -->
+              <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200 space-y-2.5 text-sm sm:text-base font-semibold leading-relaxed">
+                <p>
+                  1. In food chain 2 (grass ➔ goat), the grass is the
+                  <button onclick="selectBlank('b1')" class="px-3 py-0.5 rounded-lg border-2 font-extrabold ${activeB === 'b1' ? 'border-orange-500 bg-orange-100' : 'border-slate-300 bg-white'} text-sky-900">
+                    ${blanks.b1 || '____'}
+                  </button>
+                  and the goat is the
+                  <button onclick="selectBlank('b2')" class="px-3 py-0.5 rounded-lg border-2 font-extrabold ${activeB === 'b2' ? 'border-orange-500 bg-orange-100' : 'border-slate-300 bg-white'} text-sky-900">
+                    ${blanks.b2 || '____'}
+                  </button>.
+                </p>
+                <p>
+                  2. The
+                  <button onclick="selectBlank('b3')" class="px-3 py-0.5 rounded-lg border-2 font-extrabold ${activeB === 'b3' ? 'border-orange-500 bg-orange-100' : 'border-slate-300 bg-white'} text-sky-900">
+                    ${blanks.b3 || '____'}
+                  </button>
+                  in a food chain show the direction in which food and
+                  <button onclick="selectBlank('b4')" class="px-3 py-0.5 rounded-lg border-2 font-extrabold ${activeB === 'b4' ? 'border-orange-500 bg-orange-100' : 'border-slate-300 bg-white'} text-sky-900">
+                    ${blanks.b4 || '____'}
+                  </button>
+                  are transferred.
+                </p>
+              </div>
+
+              <div class="flex items-center justify-between">
+                <span id="p45BlankStatus" class="text-xs sm:text-sm font-bold ${state.progress.p45_s2 ? 'text-emerald-700' : 'text-slate-600'}">
+                  ${state.progress.p45_s2 ? '✅ Perfect! All 4 blanks are correct!' : 'Fill all 4 blanks and tap Check Answers.'}
+                </span>
+                <button onclick="checkP45Blanks()" class="btn-tactile bg-sky-600 hover:bg-sky-700 text-white font-bold text-xs sm:text-sm px-4 py-1.5 rounded-xl">
+                  Check Answers ✓
+                </button>
+              </div>
+            </div>
+          `;
+        } else {
+          const cer = state.answers.p45_cer;
+          container.innerHTML = `
+            <div class="space-y-3 animate-pop">
+              <span class="text-xs font-extrabold uppercase tracking-wider text-orange-600">Step 3 • Explain with CER (Page 45)</span>
+              <p class="font-bold text-slate-900 text-sm sm:text-base">
+                Explain why the arrows in <strong>corn ➔ hen ➔ boy</strong> point to the right instead of to the left:
+              </p>
+              <div class="space-y-2 text-sm">
+                <div>
+                  <label class="font-extrabold text-sky-800 block">Claim (What do the arrows show?):</label>
+                  <input type="text" value="${cer.claim}" oninput="updateCER('p45', 'claim', this.value)" placeholder="The arrows point from corn to hen to boy because..." class="w-full mt-1 px-3 py-2 rounded-xl border border-slate-300 font-semibold focus:outline-none focus:ring-2 focus:ring-orange-400" />
+                </div>
+                <div>
+                  <label class="font-extrabold text-emerald-800 block">Evidence (What did you see when you pressed Test Food Chain?):</label>
+                  <input type="text" value="${cer.evidence}" oninput="updateCER('p45', 'evidence', this.value)" placeholder="When I tested the food chain, the golden energy orb moved from..." class="w-full mt-1 px-3 py-2 rounded-xl border border-slate-300 font-semibold focus:outline-none focus:ring-2 focus:ring-orange-400" />
+                </div>
+                <div>
+                  <label class="font-extrabold text-amber-800 block">Reasoning (How do consumers get energy?):</label>
+                  <input type="text" value="${cer.reasoning}" oninput="updateCER('p45', 'reasoning', this.value)" placeholder="Energy is transferred from the producer to each consumer when..." class="w-full mt-1 px-3 py-2 rounded-xl border border-slate-300 font-semibold focus:outline-none focus:ring-2 focus:ring-orange-400" />
+                </div>
+              </div>
+              <div class="flex items-center justify-between pt-1">
+                <span class="text-xs font-bold ${state.progress.p45_s3 ? 'text-emerald-700' : 'text-slate-500'}">
+                  ${state.progress.p45_s3 ? '✅ CER Explanation Saved!' : 'Complete all 3 CER prompts to earn your Page 45 star!'}
+                </span>
+                <button onclick="saveCER('p45')" class="btn-tactile bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm px-4 py-2 rounded-xl">
+                  Save Explanation ✓
+                </button>
+              </div>
+            </div>
+          `;
+        }
+      }
+    }
+
+    function answerP44Predict(id, isCorrect) {
+      state.answers.p44_predict = id;
+      if (isCorrect) {
+        SoundFX.chimeSuccess();
+        state.progress.p44_s1 = true;
+      } else {
+        SoundFX.nudgeWrong();
+      }
+      renderNotebook();
+      updateProgressUI();
+    }
+
+    function selectSortAnimal(animalId) {
+      SoundFX.popClick();
+      state.answers.p44_selectedAnimal = animalId;
+      renderNotebook();
+    }
+
+    function dropSortAnimal(bucketId) {
+      const sel = state.answers.p44_selectedAnimal;
+      if (!sel) {
+        SoundFX.nudgeWrong();
+        return;
+      }
+      const expected = { zebra: 'herbivore', tiger: 'carnivore', monkey: 'omnivore', owl: 'carnivore', snail: 'herbivore' };
+      if (expected[sel] === bucketId) {
+        SoundFX.chimeSuccess();
+        state.answers.p44_sort[sel] = bucketId;
+        state.answers.p44_selectedAnimal = null;
+        if (Object.keys(state.answers.p44_sort).length === 5) {
+          state.progress.p44_s2 = true;
+        }
+        renderNotebook();
+        updateProgressUI();
+      } else {
+        SoundFX.nudgeWrong();
+        const fb = document.getElementById('p44SortFeedback');
+        if (fb) fb.textContent = `❌ Not quite! Check Page 44 to see what a ${sel} eats.`;
+      }
+    }
+
+    function answerP45Predict(id, isCorrect) {
+      state.answers.p45_predict = id;
+      if (isCorrect) {
+        SoundFX.chimeSuccess();
+        state.progress.p45_s1 = true;
+      } else {
+        SoundFX.nudgeWrong();
+      }
+      renderNotebook();
+      updateProgressUI();
+    }
+
+    function selectBlank(bKey) {
+      SoundFX.popClick();
+      state.answers.p45_activeBlank = bKey;
+      renderNotebook();
+    }
+
+    function fillWordBlank(word) {
+      SoundFX.popClick();
+      const bKey = state.answers.p45_activeBlank || 'b1';
+      state.answers.p45_blanks[bKey] = word;
+      const order = ['b1', 'b2', 'b3', 'b4'];
+      const nextIdx = order.indexOf(bKey) + 1;
+      if (nextIdx < order.length) state.answers.p45_activeBlank = order[nextIdx];
+      renderNotebook();
+    }
+
+    function checkP45Blanks() {
+      const b = state.answers.p45_blanks;
+      const isOk = (b.b1 === 'producer' && b.b2 === 'consumer' && b.b3 === 'arrows' && b.b4 === 'energy');
+      if (isOk) {
+        SoundFX.chimeSuccess();
+        state.progress.p45_s2 = true;
+        renderNotebook();
+        updateProgressUI();
+      } else {
+        SoundFX.nudgeWrong();
+        const status = document.getElementById('p45BlankStatus');
+        if (status) status.textContent = '❌ Check the order: Grass is a producer, goat is a consumer, and arrows show energy!';
+      }
+    }
+
+    function updateCER(prefix, field, val) {
+      state.answers[`${prefix}_cer`][field] = val;
+    }
+
+    function saveCER(prefix) {
+      const cer = state.answers[`${prefix}_cer`];
+      if (cer.claim.trim().length >= 3 && cer.evidence.trim().length >= 3 && cer.reasoning.trim().length >= 3) {
+        SoundFX.chimeSuccess();
+        state.progress[`${prefix}_s3`] = true;
+        renderNotebook();
+        updateProgressUI();
+      } else {
+        SoundFX.nudgeWrong();
+      }
+    }
+
+    /* =========================================================================
+       6. FOOD CHAIN ARRANGEMENT SIMULATION & TALKING CARTOON CHARACTERS
+       ========================================================================= */
+    const canvas = document.getElementById('scienceCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // Complete Organism Library with Clear, Simple First-Person English Speeches
+    const ORGANISMS = {
+      corn: {
+        id: 'corn', name: 'Corn', role: 'Producer', isProducer: true, eats: [], pitch: 1.15,
+        speech: "Hello! I am Corn. I am a producer. I use sunlight, water, and air to make my own food."
+      },
+      grass: {
+        id: 'grass', name: 'Grass', role: 'Producer', isProducer: true, eats: [], pitch: 1.18,
+        speech: "Hello! I am Grass. I am a green producer. I get energy from the Sun so plant-eating animals can eat me."
+      },
+      seeds: {
+        id: 'seeds', name: 'Plant Seeds', role: 'Producer', isProducer: true, eats: [], pitch: 1.2,
+        speech: "Hello! We are Plant Seeds. We come from green plants that make food using sunlight."
+      },
+      berries: {
+        id: 'berries', name: 'Fruit & Leaves', role: 'Producer', isProducer: true, eats: [], pitch: 1.16,
+        speech: "Hello! I am a Fruit and Leaf Plant. I am a producer because I make my own food using sunlight."
+      },
+      snail: {
+        id: 'snail', name: 'Snail', role: 'Consumer • Herbivore', isProducer: false, eats: ['grass', 'berries', 'seeds'], pitch: 1.2,
+        speech: "Hello! I am a Snail. I eat only plant leaves and grass. That makes me a herbivore."
+      },
+      insect: {
+        id: 'insect', name: 'Insect', role: 'Consumer • Herbivore', isProducer: false, eats: ['corn', 'grass', 'berries'], pitch: 1.22,
+        speech: "Hello! I am an Insect. I eat green leaves and corn. Because I eat only plants, I am a herbivore."
+      },
+      hen: {
+        id: 'hen', name: 'Hen', role: 'Consumer • Omnivore', isProducer: false, eats: ['corn', 'seeds', 'insect', 'snail'], pitch: 1.15,
+        speech: "Hello! I am a Hen. I am a consumer. I eat corn seeds and small insects to get my energy."
+      },
+      goat: {
+        id: 'goat', name: 'Goat', role: 'Consumer • Herbivore', isProducer: false, eats: ['grass', 'corn', 'berries'], pitch: 1.05,
+        speech: "Hello! I am a Goat. I am a consumer and a herbivore because I eat only green grass."
+      },
+      zebra: {
+        id: 'zebra', name: 'Zebra', role: 'Consumer • Herbivore', isProducer: false, eats: ['grass'], pitch: 1.02,
+        speech: "Hello! I am a Zebra. I eat only plants like grass, so I am a herbivore. Lions and tigers hunt me as prey."
+      },
+      mouse: {
+        id: 'mouse', name: 'Mouse', role: 'Consumer • Herbivore', isProducer: false, eats: ['seeds', 'corn', 'berries'], pitch: 1.24,
+        speech: "Hello! I am a Mouse. I eat seeds and corn. I am prey because owls hunt and eat me."
+      },
+      monkey: {
+        id: 'monkey', name: 'Monkey', role: 'Consumer • Omnivore', isProducer: false, eats: ['berries', 'insect', 'snail'], pitch: 1.15,
+        speech: "Hello! I am a Monkey. I eat fruits, leaves, and insects. Because I eat both plants and animals, I am an omnivore."
+      },
+      owl: {
+        id: 'owl', name: 'Owl', role: 'Consumer • Carnivore', isProducer: false, eats: ['mouse', 'snail', 'insect'], pitch: 0.95,
+        speech: "Hello! I am an Owl. I am a carnivore and a predator because I hunt and eat mice for energy."
+      },
+      boy: {
+        id: 'boy', name: 'Boy', role: 'Consumer • Omnivore', isProducer: false, eats: ['hen', 'corn', 'berries'], pitch: 1.12,
+        speech: "Hello! I am a Boy. Humans cannot make their own food, so I am a consumer when I eat a hen or corn."
+      },
+      tiger: {
+        id: 'tiger', name: 'Tiger', role: 'Consumer • Carnivore', isProducer: false, eats: ['zebra', 'goat', 'monkey', 'hen'], pitch: 0.9,
+        speech: "Hello! I am a Tiger. I eat other animals like zebras, so I am a carnivore and a predator."
+      }
+    };
+
+    // 6 Distinct Food Chain Challenges
+    const CHAIN_CHALLENGES = [
+      {
+        id: 'ex1',
+        shortTitle: '1. Corn Chain',
+        title: 'Challenge 1: Farm Food Chain (Book p. 45)',
+        slotCount: 3,
+        expected: ['corn', 'hen', 'boy'],
+        trayPool: ['hen', 'boy', 'corn', 'tiger'],
+        prompt: 'Tap any character to hear it speak! Then arrange Corn ➔ Hen ➔ Boy.'
+      },
+      {
+        id: 'ex2',
+        shortTitle: '2. Grass & Goat',
+        title: 'Challenge 2: Pasture Food Chain (Book p. 45)',
+        slotCount: 2,
+        expected: ['grass', 'goat'],
+        trayPool: ['goat', 'grass', 'owl'],
+        prompt: 'Meet the Grass and Goat, then place Producer ➔ Consumer in order.'
+      },
+      {
+        id: 'savanna',
+        shortTitle: '3. Savanna',
+        title: 'Challenge 3: Savanna Food Chain (Book p. 44)',
+        slotCount: 3,
+        expected: ['grass', 'zebra', 'tiger'],
+        trayPool: ['tiger', 'grass', 'zebra', 'snail'],
+        prompt: 'Build the Savanna chain: Producer ➔ Herbivore ➔ Carnivore.'
+      },
+      {
+        id: 'woodland',
+        shortTitle: '4. Woodland',
+        title: 'Challenge 4: Predator & Prey Chain (Book p. 44)',
+        slotCount: 3,
+        expected: ['seeds', 'mouse', 'owl'],
+        trayPool: ['owl', 'seeds', 'mouse', 'goat'],
+        prompt: 'Build the Woodland chain where an Owl is the predator and a Mouse is the prey.'
+      },
+      {
+        id: 'omnivore',
+        shortTitle: '5. Forest',
+        title: 'Challenge 5: Forest Omnivore Chain (Book p. 44)',
+        slotCount: 3,
+        expected: ['berries', 'monkey', 'tiger'],
+        trayPool: ['monkey', 'tiger', 'berries', 'zebra'],
+        prompt: 'Arrange the Forest chain featuring a Monkey (omnivore) eating fruit & leaves!'
+      },
+      {
+        id: 'freebuild',
+        shortTitle: '6. Free Build',
+        title: 'Challenge 6: 4-Link Sandbox Food Chain Builder',
+        slotCount: 4,
+        expected: null,
+        trayPool: ['corn', 'grass', 'berries', 'snail', 'insect', 'hen', 'mouse', 'monkey', 'owl', 'tiger'],
+        prompt: 'Free Build! Arrange ANY valid 3- or 4-link food chain and hear their full chain story!'
+      }
+    ];
+
+    const chainLab = {
+      currentChallengeId: 'ex1',
+      slots: [null, null, null],
+      slotRects: [],
+      talkBtnRects: [],
+      trayItems: [],
+      selectedTrayOrg: null,
+      showHints: false,
+      voiceEnabled: true,
+      sunPower: 80,
+      slowMo: false,
+      producerRemoved: false,
+      solvedChallenges: {},
+      // Active Talking Character & Speech Bubble State
+      speaker: null, // { orgId, slotIndex, text, untilTime }
+      storyQueue: [],
+      // Energy flow animation state
+      animating: false,
+      currentLinkIdx: -1,
+      linkProgress: 0,
+      brokenAtSlot: null,
+      chainValidated: false
+    };
+
+    /* ---------------- FIRST-PERSON CHARACTER SPEECH & VOICE ENGINE ---------------- */
+    function toggleCharacterVoice() {
+      chainLab.voiceEnabled = !chainLab.voiceEnabled;
+      const btn = document.getElementById('btnVoiceToggle');
+      btn.textContent = chainLab.voiceEnabled ? '🔊 Voice: ON' : '🔇 Voice: OFF';
+      btn.className = chainLab.voiceEnabled
+        ? 'btn-tactile px-2.5 py-1 rounded-lg text-xs font-extrabold bg-sky-600 border border-sky-800 text-white hover:bg-sky-700'
+        : 'btn-tactile px-2.5 py-1 rounded-lg text-xs font-extrabold bg-slate-200 border border-slate-400 text-slate-700';
+      if (!chainLab.voiceEnabled && 'speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      } else {
+        SoundFX.popClick();
+      }
+    }
+
+    function makeOrganismSpeak(orgId, slotIndex = null, customText = null, onDoneCallback = null) {
+      const org = ORGANISMS[orgId];
+      if (!org) return;
+
+      const textToSay = customText || org.speech;
+      const estimatedDurationMs = Math.max(3400, textToSay.length * 62);
+
+      chainLab.speaker = {
+        orgId,
+        slotIndex,
+        text: textToSay,
+        untilTime: performance.now() + estimatedDurationMs
+      };
+
+      // Update bottom inspector with miniature cartoon avatar + first-person quote
+      updateInspectorCard(
+        getOrganismMiniCanvasHTML(orgId, 42),
+        `${org.name} says:`,
+        org.role,
+        `"${textToSay}"`,
+        org.isProducer ? 'bg-emerald-100 text-emerald-800' : 'bg-sky-100 text-sky-800'
+      );
+
+      // Speak out loud via Web Speech API using a clear English voice
+      if (chainLab.voiceEnabled && 'speechSynthesis' in window) {
+        try {
+          window.speechSynthesis.cancel();
+          const utter = new SpeechSynthesisUtterance(textToSay);
+          utter.lang = 'en-US';
+          const clearVoice = getClearEnglishVoice();
+          if (clearVoice) utter.voice = clearVoice;
+          utter.rate = 0.92;
+          utter.pitch = org.pitch || 1.08;
+          utter.onend = () => {
+            if (chainLab.speaker && chainLab.speaker.orgId === orgId) {
+              chainLab.speaker.untilTime = performance.now() + 300;
+            }
+            if (onDoneCallback) onDoneCallback();
+          };
+          utter.onerror = () => {
+            if (onDoneCallback) setTimeout(onDoneCallback, 2200);
+          };
+          window.speechSynthesis.speak(utter);
+          return;
+        } catch (e) { /* Fallback to timer below */ }
+      }
+
+      if (onDoneCallback) {
+        setTimeout(onDoneCallback, estimatedDurationMs);
+      }
+    }
+
+    function hearChainStory() {
+      const placed = chainLab.slots
+        .map((orgId, idx) => ({ orgId, idx }))
+        .filter(item => item.orgId !== null);
+
+      if (placed.length === 0) {
+        SoundFX.nudgeWrong();
+        document.getElementById('simEventBanner').textContent = '⚠️ Place living things in slots first!';
+        return;
+      }
+
+      SoundFX.popClick();
+      let step = 0;
+      function speakNextInChain() {
+        if (step >= placed.length) {
+          document.getElementById('simEventBanner').textContent = '💬 Chain Story finished!';
+          return;
+        }
+        const { orgId, idx } = placed[step];
+        const org = ORGANISMS[orgId];
+        let storyLine = org.speech;
+        if (idx === 0 && org.isProducer) {
+          storyLine = `I'm ${org.name}, the Producer in Slot 1! I capture sunlight to start the food chain!`;
+        } else if (idx > 0 && chainLab.slots[idx - 1]) {
+          const prevOrg = ORGANISMS[chainLab.slots[idx - 1]];
+          if (org.eats.includes(prevOrg.id)) {
+            storyLine = `I'm ${org.name}, Consumer ${idx}! I eat ${prevOrg.name} to get my energy!`;
+          }
+        }
+        step++;
+        makeOrganismSpeak(orgId, idx, storyLine, speakNextInChain);
+      }
+      speakNextInChain();
+    }
+
+    function getChallenge() {
+      return CHAIN_CHALLENGES.find(c => c.id === chainLab.currentChallengeId) || CHAIN_CHALLENGES[0];
+    }
+
+    function renderChallengeTabs() {
+      const container = document.getElementById('challengeTabsContainer');
+      const solvedCount = Object.keys(chainLab.solvedChallenges).length;
+      document.getElementById('chainProgressBadge').textContent = `Chains Solved: ${solvedCount} / 6`;
+
+      container.innerHTML = CHAIN_CHALLENGES.map(ch => {
+        const isActive = ch.id === chainLab.currentChallengeId;
+        const isSolved = Boolean(chainLab.solvedChallenges[ch.id]);
+        return `
+          <button onclick="selectChallenge('${ch.id}')" class="btn-tactile px-2 py-1.5 rounded-xl text-xs font-extrabold border-2 transition flex items-center justify-center gap-1 text-center ${
+            isActive
+              ? 'bg-sky-600 border-sky-800 text-white shadow-sm'
+              : isSolved
+                ? 'bg-emerald-50 border-emerald-400 text-emerald-900 hover:bg-emerald-100'
+                : 'bg-white border-slate-300 text-slate-700 hover:bg-sky-50'
+          }">
+            <span>${ch.shortTitle}</span>
+            ${isSolved ? '<span>✅</span>' : ''}
+          </button>
+        `;
+      }).join('');
+    }
+
+    function selectChallenge(id) {
+      SoundFX.popClick();
+      if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+      chainLab.currentChallengeId = id;
+      const ch = getChallenge();
+      chainLab.slots = new Array(ch.slotCount).fill(null);
+      chainLab.selectedTrayOrg = null;
+      chainLab.producerRemoved = false;
+      chainLab.animating = false;
+      chainLab.brokenAtSlot = null;
+      chainLab.chainValidated = false;
+      chainLab.speaker = null;
+      updateRemoveProducerButton();
+
+      chainLab.trayItems = [...ch.trayPool].sort(() => Math.random() - 0.5);
+
+      renderChallengeTabs();
+      renderOrganismTray();
+      updateInspectorCard(
+        '<span class="text-2xl">🔗</span>',
+        ch.title,
+        `${ch.slotCount} Chain Slots`,
+        ch.prompt,
+        'bg-sky-100 text-sky-800'
+      );
+      document.getElementById('simEventBanner').textContent = 'Tap any living thing to hear it talk!';
+    }
+
+    function shuffleCurrentTray() {
+      SoundFX.popClick();
+      chainLab.trayItems.sort(() => Math.random() - 0.5);
+      renderOrganismTray();
+    }
+
+    function clearChainSlots() {
+      SoundFX.popClick();
+      if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+      const ch = getChallenge();
+      chainLab.slots = new Array(ch.slotCount).fill(null);
+      chainLab.selectedTrayOrg = null;
+      chainLab.producerRemoved = false;
+      chainLab.animating = false;
+      chainLab.brokenAtSlot = null;
+      chainLab.chainValidated = false;
+      chainLab.speaker = null;
+      updateRemoveProducerButton();
+      renderOrganismTray();
+      updateInspectorCard('<span class="text-2xl">🧹</span>', ch.title, 'Slots Cleared', ch.prompt, 'bg-slate-100 text-slate-800');
+    }
+
+    function toggleRoleHints() {
+      SoundFX.popClick();
+      chainLab.showHints = !chainLab.showHints;
+      const btn = document.getElementById('btnToggleHints');
+      btn.textContent = chainLab.showHints ? '🏷️ Role Hints: ON' : '🏷️ Role Hints: OFF';
+      btn.classList.toggle('bg-amber-200', chainLab.showHints);
+      renderOrganismTray();
+    }
+
+    function renderOrganismTray() {
+      const trayEl = document.getElementById('organismTray');
+      trayEl.innerHTML = chainLab.trayItems.map(orgId => {
+        const org = ORGANISMS[orgId];
+        const isPlaced = chainLab.slots.includes(orgId);
+        const isSelected = chainLab.selectedTrayOrg === orgId;
+
+        return `
+          <div
+            draggable="true"
+            ondragstart="handleTrayDragStart(event, '${orgId}')"
+            onclick="handleTrayCardTap('${orgId}')"
+            class="cursor-grab active:cursor-grabbing select-none rounded-2xl border-2 px-2.5 py-1.5 flex items-center gap-2 transition shadow-xs ${
+              isSelected
+                ? 'bg-amber-300 border-amber-600 scale-105 ring-2 ring-amber-400'
+                : isPlaced
+                  ? 'bg-slate-100 border-slate-300 opacity-60'
+                  : 'bg-white hover:bg-sky-50 border-slate-300 hover:border-sky-400'
+            }"
+          >
+            <div class="w-10 h-10 shrink-0 flex items-center justify-center">
+              ${getOrganismMiniCanvasHTML(orgId, 40)}
+            </div>
+            <div class="leading-tight">
+              <div class="font-display font-bold text-xs sm:text-sm text-slate-900 flex items-center gap-1">
+                <span>${org.name}</span>
+                <button type="button" onclick="event.stopPropagation(); makeOrganismSpeak('${orgId}', null)" class="text-[11px] bg-sky-100 hover:bg-sky-200 text-sky-800 px-1.5 py-0.2 rounded-full" title="Hear ${org.name} talk">💬</button>
+              </div>
+              ${chainLab.showHints ? `<div class="text-[10px] font-extrabold ${org.isProducer ? 'text-emerald-700' : 'text-orange-700'}">${org.role}</div>` : ''}
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      // Paint miniature cartoon portraits inside each tray card canvas
+      requestAnimationFrame(() => {
+        document.querySelectorAll('canvas[data-mini-org]').forEach(miniC => {
+          const id = miniC.getAttribute('data-mini-org');
+          const mctx = miniC.getContext('2d');
+          mctx.clearRect(0, 0, miniC.width, miniC.height);
+          drawCartoonOrganism(mctx, id, miniC.width / 2, miniC.height / 2 + 2, miniC.width * 0.44, performance.now() / 1000, false, false);
+        });
+      });
+    }
+
+    function getOrganismMiniCanvasHTML(orgId, size = 40) {
+      return `<canvas data-mini-org="${orgId}" width="${size}" height="${size}" class="block"></canvas>`;
+    }
+
+    /* ---------------- DRAG-AND-DROP + TAP-TO-PLACE + CLICK-TO-TALK HANDLERS ---------------- */
+    let draggedOrgId = null;
+
+    function handleTrayDragStart(e, orgId) {
+      draggedOrgId = orgId;
+      chainLab.selectedTrayOrg = orgId;
+      if (e.dataTransfer) {
+        e.dataTransfer.setData('text/plain', orgId);
+        e.dataTransfer.effectAllowed = 'move';
+      }
+    }
+
+    canvas.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      if (e.dataTransfer) e.dataTransfer.dropEffect = 'move';
+    });
+
+    canvas.addEventListener('drop', (e) => {
+      e.preventDefault();
+      const orgId = (e.dataTransfer && e.dataTransfer.getData('text/plain')) || draggedOrgId;
+      if (!orgId) return;
+      const rect = canvas.getBoundingClientRect();
+      const dropX = e.clientX - rect.left;
+      const dropY = e.clientY - rect.top;
+
+      const hitSlot = findSlotAtPoint(dropX, dropY);
+      if (hitSlot !== null) {
+        placeOrganismInSlot(orgId, hitSlot);
+      }
+      draggedOrgId = null;
+    });
+
+    function handleTrayCardTap(orgId) {
+      // Clicking a card in the tray makes it introduce itself AND selects it to place!
+      makeOrganismSpeak(orgId, null);
+
+      if (chainLab.selectedTrayOrg === orgId) {
+        chainLab.selectedTrayOrg = null;
+      } else {
+        chainLab.selectedTrayOrg = orgId;
+        const nextEmpty = chainLab.slots.findIndex(s => s === null);
+        const org = ORGANISMS[orgId];
+        document.getElementById('simEventBanner').textContent = nextEmpty >= 0
+          ? `${org.name} selected — tap Slot ${nextEmpty + 1} to place!`
+          : `${org.name} selected — tap any slot to replace!`;
+      }
+      renderOrganismTray();
+    }
+
+    function placeOrganismInSlot(orgId, slotIndex) {
+      chainLab.slots = chainLab.slots.map(existing => (existing === orgId ? null : existing));
+      chainLab.slots[slotIndex] = orgId;
+      chainLab.selectedTrayOrg = null;
+      chainLab.producerRemoved = false;
+      chainLab.animating = false;
+      chainLab.brokenAtSlot = null;
+      chainLab.chainValidated = false;
+      updateRemoveProducerButton();
+      renderOrganismTray();
+
+      // Have the newly placed living thing speak right inside its slot!
+      makeOrganismSpeak(orgId, slotIndex);
+      document.getElementById('simEventBanner').textContent = `${ORGANISMS[orgId].name} is in Slot ${slotIndex + 1}!`;
+    }
+
+    function findSlotAtPoint(x, y) {
+      for (const r of chainLab.slotRects) {
+        if (x >= r.x && x <= r.x + r.w && y >= r.y && y <= r.y + r.h) {
+          return r.index;
+        }
+      }
+      return null;
+    }
+
+    // Canvas Tap / Click Handler
+    canvas.addEventListener('click', (e) => {
+      const rect = canvas.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      const clickY = e.clientY - rect.top;
+
+      // Check if user clicked the small "Remove ✕" corner button on an occupied slot
+      for (const r of chainLab.slotRects) {
+        if (chainLab.slots[r.index]) {
+          const removeX = r.x + r.w - 16;
+          const removeY = r.y + 16;
+          if (Math.hypot(clickX - removeX, clickY - removeY) <= 13) {
+            const removedId = chainLab.slots[r.index];
+            chainLab.slots[r.index] = null;
+            chainLab.animating = false;
+            chainLab.brokenAtSlot = null;
+            chainLab.chainValidated = false;
+            if (chainLab.speaker && chainLab.speaker.slotIndex === r.index) chainLab.speaker = null;
+            SoundFX.popClick();
+            renderOrganismTray();
+            document.getElementById('simEventBanner').textContent = `Returned ${ORGANISMS[removedId].name} to tray`;
+            return;
+          }
+        }
+      }
+
+      const hitSlot = findSlotAtPoint(clickX, clickY);
+      if (hitSlot !== null) {
+        if (chainLab.selectedTrayOrg) {
+          placeOrganismInSlot(chainLab.selectedTrayOrg, hitSlot);
+        } else if (chainLab.slots[hitSlot]) {
+          // Tapping an occupied living thing on the canvas makes it talk about itself!
+          makeOrganismSpeak(chainLab.slots[hitSlot], hitSlot);
+        } else {
+          SoundFX.popClick();
+          document.getElementById('simEventBanner').textContent = `Tap a character in the tray first, then tap Slot ${hitSlot + 1}!`;
+        }
+      }
+    });
+
+    /* ---------------- VALIDATING & ANIMATING THE ARRANGED FOOD CHAIN ---------------- */
+    function testFoodChain() {
+      const ch = getChallenge();
+      chainLab.producerRemoved = false;
+      updateRemoveProducerButton();
+
+      let activeSlots = [...chainLab.slots];
+      if (ch.id === 'freebuild' && activeSlots[3] === null && activeSlots[0] && activeSlots[1] && activeSlots[2]) {
+        activeSlots = activeSlots.slice(0, 3);
+      }
+
+      if (activeSlots.some(s => s === null)) {
+        SoundFX.nudgeWrong();
+        updateInspectorCard(
+          '<span class="text-2xl">❓</span>',
+          'Empty Chain Slots Remaining!',
+          'Incomplete Chain',
+          `Fill all ${ch.id === 'freebuild' ? '3 or 4' : ch.slotCount} slots in order from left to right before testing energy flow!`,
+          'bg-amber-100 text-amber-900'
+        );
+        document.getElementById('simEventBanner').textContent = '⚠️ Fill empty slots first!';
+        return;
+      }
+
+      let brokenIndex = null;
+      let reason = '';
+
+      const firstOrg = ORGANISMS[activeSlots[0]];
+      if (!firstOrg.isProducer) {
+        brokenIndex = 0;
+        reason = `"Hey! I'm ${firstOrg.name}—I can't make food from sunlight! Put a Producer (plant) in Slot 1 first!"`;
+      } else {
+        for (let i = 1; i < activeSlots.length; i++) {
+          const prevOrg = ORGANISMS[activeSlots[i - 1]];
+          const currOrg = ORGANISMS[activeSlots[i]];
+          if (currOrg.isProducer) {
+            brokenIndex = i;
+            reason = `"I'm ${currOrg.name}, a plant! I make food from sunlight—I don't eat ${prevOrg.name}!"`;
+            break;
+          }
+          if (!currOrg.eats.includes(prevOrg.id)) {
+            brokenIndex = i;
+            reason = `"Wait a minute! I'm ${currOrg.name}, and I don't eat ${prevOrg.name}! Check what I eat on Pages 44–45!"`;
+            break;
+          }
+        }
+      }
+
+      chainLab.animating = true;
+      chainLab.currentLinkIdx = -1;
+      chainLab.linkProgress = 0;
+      chainLab.brokenAtSlot = brokenIndex;
+      chainLab.chainValidated = (brokenIndex === null);
+      chainLab.pendingErrorReason = reason;
+
+      // Have Slot 1 speak as the energy test starts!
+      makeOrganismSpeak(activeSlots[0], 0);
+      document.getElementById('simEventBanner').textContent = '⚡ Testing energy transfer...';
+    }
+
+    function onChainAnimationComplete() {
+      chainLab.animating = false;
+      const ch = getChallenge();
+      const activeIds = chainLab.slots.filter(Boolean);
+      const chainText = activeIds.map(id => ORGANISMS[id].name).join(' ➔ ');
+
+      if (chainLab.brokenAtSlot === null) {
+        SoundFX.chimeSuccess();
+        chainLab.solvedChallenges[ch.id] = true;
+        renderChallengeTabs();
+        document.getElementById('simStatusDot').className = 'w-2.5 h-2.5 rounded-full bg-emerald-400';
+        document.getElementById('simEventBanner').textContent = '✅ Valid Food Chain! Energy flows!';
+
+        const lastIdx = activeIds.length - 1;
+        const lastOrg = ORGANISMS[activeIds[lastIdx]];
+        makeOrganismSpeak(
+          lastOrg.id,
+          lastIdx,
+          `Yay! Our food chain (${chainText}) works! Energy traveled all the way to me!`,
+          null
+        );
+      } else {
+        SoundFX.nudgeWrong();
+        document.getElementById('simStatusDot').className = 'w-2.5 h-2.5 rounded-full bg-rose-400';
+        document.getElementById('simEventBanner').textContent = `❌ Energy stopped at Slot ${chainLab.brokenAtSlot + 1}!`;
+
+        const brokenOrgId = chainLab.slots[chainLab.brokenAtSlot];
+        makeOrganismSpeak(brokenOrgId, chainLab.brokenAtSlot, chainLab.pendingErrorReason.replace(/^"|"$/g, ''), null);
+      }
+    }
+
+    function updateSunPower(val) {
+      chainLab.sunPower = Number(val);
+      document.getElementById('sunValLabel').textContent = val + '%';
+    }
+
+    function toggleSlowMotion() {
+      SoundFX.popClick();
+      chainLab.slowMo = !chainLab.slowMo;
+      const btn = document.getElementById('btnSlowMo');
+      btn.textContent = chainLab.slowMo ? '🐢 Slow-Mo: ON' : '🐢 Slow-Mo: OFF';
+      btn.classList.toggle('bg-amber-200', chainLab.slowMo);
+    }
+
+    function toggleRemoveProducer() {
+      chainLab.producerRemoved = !chainLab.producerRemoved;
+      updateRemoveProducerButton();
+      if (chainLab.producerRemoved) {
+        SoundFX.nudgeWrong();
+        chainLab.animating = false;
+        chainLab.speaker = null;
+        document.getElementById('simStatusDot').className = 'w-2.5 h-2.5 rounded-full bg-rose-500';
+        document.getElementById('simEventBanner').textContent = '🚫 Producer removed! No energy enters chain!';
+        updateInspectorCard(
+          '<span class="text-2xl">🚫</span>',
+          'Experiment: Producer Removed!',
+          'Energy Cut Off',
+          'Without the producer in Slot 1 to capture sunlight, zero food energy can reach the consumers!',
+          'bg-rose-100 text-rose-900'
+        );
+      } else {
+        SoundFX.chimeSuccess();
+        document.getElementById('simStatusDot').className = 'w-2.5 h-2.5 rounded-full bg-emerald-400';
+        document.getElementById('simEventBanner').textContent = '🌱 Producer restored!';
+        if (chainLab.slots[0]) makeOrganismSpeak(chainLab.slots[0], 0);
+      }
+    }
+
+    function updateRemoveProducerButton() {
+      const btn = document.getElementById('btnRemoveProducer');
+      if (chainLab.producerRemoved) {
+        btn.textContent = '🌱 Restore Producer';
+        btn.className = 'btn-tactile px-3 py-1.5 rounded-xl text-xs font-extrabold bg-emerald-600 text-white';
+      } else {
+        btn.textContent = '🚫 Remove Producer';
+        btn.className = 'btn-tactile px-3 py-1.5 rounded-xl text-xs font-extrabold bg-rose-100 hover:bg-rose-200 border border-rose-400 text-rose-800';
+      }
+    }
+
+    function updateInspectorCard(iconHtml, title, badge, desc, badgeClass) {
+      document.getElementById('inspectorIcon').innerHTML = iconHtml;
+      document.getElementById('inspectorName').textContent = title;
+      const bEl = document.getElementById('inspectorBadge');
+      bEl.textContent = badge;
+      bEl.className = `text-[11px] font-extrabold px-2 py-0.5 rounded-full ${badgeClass}`;
+      document.getElementById('inspectorDesc').innerHTML = desc;
+
+      requestAnimationFrame(() => {
+        document.querySelectorAll('#inspectorIcon canvas[data-mini-org]').forEach(miniC => {
+          const id = miniC.getAttribute('data-mini-org');
+          const mctx = miniC.getContext('2d');
+          mctx.clearRect(0, 0, miniC.width, miniC.height);
+          drawCartoonOrganism(mctx, id, miniC.width / 2, miniC.height / 2 + 2, miniC.width * 0.44, performance.now() / 1000, false, false);
+        });
+      });
+    }
+
+    /* =========================================================================
+       7. BESPOKE 2D CARTOON ORGANISM ILLUSTRATOR & CANVAS ANIMATION LOOP
+       ========================================================================= */
+    function resizeCanvas() {
+      const container = document.getElementById('canvasContainer');
+      const rect = container.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    window.addEventListener('resize', resizeCanvas);
+
+    let lastTimestamp = 0;
+
+    function renderLoop(timestamp) {
+      const dt = Math.min(0.05, (timestamp - lastTimestamp) / 1000 || 0.016);
+      lastTimestamp = timestamp;
+
+      // Clear expired speech bubble
+      if (chainLab.speaker && timestamp > chainLab.speaker.untilTime) {
+        chainLab.speaker = null;
+      }
+
+      const w = canvas.clientWidth;
+      const h = canvas.clientHeight;
+      ctx.clearRect(0, 0, w, h);
+
+      drawFoodChainCanvas(w, h, dt, timestamp / 1000);
+      requestAnimationFrame(renderLoop);
+    }
+
+    function drawRoundedRect(c, x, y, w, h, r) {
+      c.beginPath();
+      c.moveTo(x + r, y);
+      c.lineTo(x + w - r, y);
+      c.quadraticCurveTo(x + w, y, x + w, y + r);
+      c.lineTo(x + w, y + h - r);
+      c.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+      c.lineTo(x + r, y + h);
+      c.quadraticCurveTo(x, y + h, x, y + h - r);
+      c.lineTo(x, y + r);
+      c.quadraticCurveTo(x, y, x + r, y);
+      c.closePath();
+    }
+
+    function drawFoodChainCanvas(w, h, dt, timeSec) {
+      // 1. Vibrant Textbook Meadow & Sky Backdrop
+      const bg = ctx.createLinearGradient(0, 0, 0, h);
+      bg.addColorStop(0, '#DFF3FE');
+      bg.addColorStop(0.62, '#ECFDF5');
+      bg.addColorStop(1, '#D1FAE5');
+      ctx.fillStyle = bg;
+      ctx.fillRect(0, 0, w, h);
+
+      // Soft rolling cartoon meadow hills in background
+      ctx.fillStyle = '#BBF7D0';
+      ctx.beginPath();
+      ctx.ellipse(w * 0.28, h * 0.78, w * 0.45, h * 0.22, 0, Math.PI, 0);
+      ctx.fill();
+      ctx.fillStyle = '#A7F3D0';
+      ctx.beginPath();
+      ctx.ellipse(w * 0.78, h * 0.8, w * 0.45, h * 0.24, 0, Math.PI, 0);
+      ctx.fill();
+
+      // Compute responsive layout for Sun + N Slots (leaving top headroom for speech bubbles!)
+      const slotCount = chainLab.slots.length;
+      const sunX = Math.max(42, w * 0.07);
+      const centerY = h * 0.49;
+
+      const startAreaX = sunX + 54;
+      const endAreaX = w - 20;
+      const availableW = Math.max(200, endAreaX - startAreaX);
+      const arrowGap = slotCount === 4 ? Math.max(22, availableW * 0.045) : Math.max(32, availableW * 0.075);
+      const cardW = Math.min(132, (availableW - arrowGap * (slotCount - 1)) / slotCount);
+      const cardH = Math.min(144, h * 0.4);
+
+      chainLab.slotRects = [];
+      for (let i = 0; i < slotCount; i++) {
+        const sx = startAreaX + i * (cardW + arrowGap);
+        const sy = centerY - cardH / 2;
+        chainLab.slotRects.push({ x: sx, y: sy, w: cardW, h: cardH, index: i });
+      }
+
+      // 2. Draw Expressive Smiling Cartoon Sun on the Left
+      const sunRadius = 19 + (chainLab.sunPower / 100) * 10;
+      ctx.save();
+      if (!chainLab.producerRemoved) {
+        ctx.fillStyle = `rgba(250, 204, 21, ${0.2 + (chainLab.sunPower / 100) * 0.24})`;
+        ctx.beginPath();
+        ctx.arc(sunX, centerY, sunRadius + 11 + Math.sin(timeSec * 4) * 3, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      // Rotating sun rays
+      ctx.strokeStyle = '#F59E0B';
+      ctx.lineWidth = 2.5;
+      for (let r = 0; r < 8; r++) {
+        const ang = timeSec * 0.6 + (r * Math.PI) / 4;
+        ctx.beginPath();
+        ctx.moveTo(sunX + Math.cos(ang) * (sunRadius + 3), centerY + Math.sin(ang) * (sunRadius + 3));
+        ctx.lineTo(sunX + Math.cos(ang) * (sunRadius + 9), centerY + Math.sin(ang) * (sunRadius + 9));
+        ctx.stroke();
+      }
+      ctx.fillStyle = '#FACC15';
+      ctx.strokeStyle = '#D97706';
+      ctx.lineWidth = 2.5;
+      ctx.beginPath();
+      ctx.arc(sunX, centerY, sunRadius, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+      // Cute sun face
+      ctx.fillStyle = '#78350F';
+      ctx.beginPath();
+      ctx.arc(sunX - 5, centerY - 3, 2, 0, Math.PI * 2);
+      ctx.arc(sunX + 5, centerY - 3, 2, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(sunX, centerY + 1, 5, 0.1 * Math.PI, 0.9 * Math.PI);
+      ctx.stroke();
+
+      ctx.fillStyle = '#713F12';
+      ctx.font = 'bold 11px Fredoka, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(`SUN ${chainLab.sunPower}%`, sunX, centerY + sunRadius + 18);
+      ctx.restore();
+
+      // Arrow from Sun to Slot 1
+      const slot0 = chainLab.slotRects[0];
+      if (slot0) {
+        drawEnergyArrow(sunX + sunRadius + 8, centerY, slot0.x - 6, centerY, !chainLab.producerRemoved && chainLab.brokenAtSlot !== 0, true);
+      }
+
+      // 3. Draw Directional Energy Arrows Between Slots
+      for (let i = 0; i < chainLab.slotRects.length - 1; i++) {
+        const currRect = chainLab.slotRects[i];
+        const nextRect = chainLab.slotRects[i + 1];
+        const isBrokenAfter = (chainLab.brokenAtSlot !== null && i + 1 >= chainLab.brokenAtSlot);
+        const isLit = !chainLab.producerRemoved && !isBrokenAfter && (chainLab.chainValidated || (chainLab.animating && chainLab.currentLinkIdx >= i));
+        drawEnergyArrow(currRect.x + currRect.w + 4, centerY, nextRect.x - 4, centerY, isLit, false);
+      }
+
+      // 4. Advance Step-by-Step Energy Wave Animation
+      if (chainLab.animating) {
+        const speedMult = chainLab.slowMo ? 0.55 : 1.35;
+        chainLab.linkProgress += dt * speedMult;
+
+        if (chainLab.linkProgress >= 1) {
+          chainLab.linkProgress = 0;
+          const nextTargetSlot = chainLab.currentLinkIdx + 1;
+
+          if (chainLab.brokenAtSlot !== null && nextTargetSlot === chainLab.brokenAtSlot) {
+            onChainAnimationComplete();
+          } else if (nextTargetSlot >= chainLab.slots.filter(Boolean).length - 1) {
+            onChainAnimationComplete();
+          } else {
+            chainLab.currentLinkIdx++;
+            const nextOrgId = chainLab.slots[chainLab.currentLinkIdx];
+            if (nextOrgId) makeOrganismSpeak(nextOrgId, chainLab.currentLinkIdx);
+          }
+        }
+      }
+
+      // 5. Draw Each Chain Arrangement Slot Card + Live Animated Cartoon Living Thing
+      chainLab.slotRects.forEach((r, idx) => {
+        const orgId = chainLab.slots[idx];
+        const org = orgId ? ORGANISMS[orgId] : null;
+        const isBrokenSlot = (chainLab.brokenAtSlot === idx);
+        const isRemovedProd = (idx === 0 && chainLab.producerRemoved);
+        const isSpeakingHere = Boolean(
+          chainLab.speaker &&
+          (chainLab.speaker.slotIndex === idx || (chainLab.speaker.slotIndex === null && chainLab.speaker.orgId === orgId))
+        );
+
+        ctx.save();
+        drawRoundedRect(ctx, r.x, r.y, r.w, r.h, 18);
+
+        if (!org) {
+          ctx.fillStyle = chainLab.selectedTrayOrg ? 'rgba(254, 243, 199, 0.9)' : 'rgba(255, 255, 255, 0.82)';
+          ctx.fill();
+          ctx.setLineDash([7, 5]);
+          ctx.strokeStyle = chainLab.selectedTrayOrg ? '#F59E0B' : '#94A3B8';
+          ctx.lineWidth = 2.5;
+          ctx.stroke();
+          ctx.setLineDash([]);
+
+          ctx.fillStyle = '#475569';
+          ctx.font = 'bold 13px Fredoka, sans-serif';
+          ctx.textAlign = 'center';
+          ctx.fillText(`Slot ${idx + 1}`, r.x + r.w / 2, r.y + r.h / 2 - 8);
+
+          ctx.fillStyle = idx === 0 ? '#15803D' : '#0369A1';
+          ctx.font = 'bold 11px Nunito, sans-serif';
+          ctx.fillText(idx === 0 ? '(Producer)' : `(Consumer ${idx})`, r.x + r.w / 2, r.y + r.h / 2 + 12);
+        } else {
+          // Occupied Living Thing Habitat Card
+          ctx.fillStyle = isBrokenSlot || isRemovedProd ? '#FEF2F2' : '#FFFFFF';
+          ctx.fill();
+          ctx.strokeStyle = isSpeakingHere
+            ? '#F59E0B'
+            : isBrokenSlot || isRemovedProd
+              ? '#EF4444'
+              : chainLab.chainValidated
+                ? '#16A34A'
+                : (org.isProducer ? '#22C55E' : '#0284C7');
+          ctx.lineWidth = isSpeakingHere ? 4.5 : 3.5;
+          ctx.stroke();
+
+          // Top slot number badge
+          ctx.fillStyle = org.isProducer ? '#DCFCE7' : '#E0F2FE';
+          drawRoundedRect(ctx, r.x + 8, r.y + 7, r.w - 32, 18, 8);
+          ctx.fill();
+          ctx.fillStyle = org.isProducer ? '#166534' : '#075985';
+          ctx.font = 'bold 10px Nunito, sans-serif';
+          ctx.textAlign = 'center';
+          ctx.fillText(idx === 0 ? '1 • PRODUCER' : `${idx + 1} • CONSUMER`, r.x + (r.w - 16) / 2, r.y + 19);
+
+          // Small "✕" Remove button in top-right corner of card
+          ctx.fillStyle = '#FEE2E2';
+          ctx.beginPath();
+          ctx.arc(r.x + r.w - 15, r.y + 16, 10, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.fillStyle = '#B91C1C';
+          ctx.font = 'bold 11px sans-serif';
+          ctx.fillText('✕', r.x + r.w - 15, r.y + 20);
+
+          // Draw Custom Animated Cartoon Living Thing!
+          ctx.globalAlpha = isRemovedProd ? 0.25 : 1;
+          const charRadius = Math.min(r.w * 0.34, r.h * 0.27);
+          drawCartoonOrganism(
+            ctx,
+            orgId,
+            r.x + r.w / 2,
+            r.y + r.h * 0.54,
+            charRadius,
+            timeSec + idx * 0.7,
+            isSpeakingHere,
+            isBrokenSlot
+          );
+          ctx.globalAlpha = 1;
+
+          // Organism Name + Speech Icon
+          ctx.fillStyle = '#0F172A';
+          ctx.font = 'bold 13px Fredoka, sans-serif';
+          ctx.textBaseline = 'alphabetic';
+          ctx.fillText(`${org.name} 💬`, r.x + r.w / 2, r.y + r.h - 9);
+
+          if (isRemovedProd) {
+            ctx.fillStyle = '#DC2626';
+            ctx.font = 'bold 12px Nunito, sans-serif';
+            ctx.fillText('REMOVED', r.x + r.w / 2, r.y + r.h * 0.56);
+          }
+        }
+        ctx.restore();
+      });
+
+      // 6. Draw Comic Speech Bubble Above Speaking Character!
+      if (chainLab.speaker) {
+        let targetRect = null;
+        if (chainLab.speaker.slotIndex !== null && chainLab.slotRects[chainLab.speaker.slotIndex]) {
+          targetRect = chainLab.slotRects[chainLab.speaker.slotIndex];
+        } else {
+          const foundIdx = chainLab.slots.indexOf(chainLab.speaker.orgId);
+          if (foundIdx >= 0) targetRect = chainLab.slotRects[foundIdx];
+        }
+        const anchorX = targetRect ? (targetRect.x + targetRect.w / 2) : (w * 0.5);
+        const anchorY = targetRect ? (targetRect.y - 8) : (h * 0.25);
+        drawComicSpeechBubble(ctx, anchorX, anchorY, w, ORGANISMS[chainLab.speaker.orgId].name, chainLab.speaker.text);
+      }
+
+      // 7. Draw Traveling Golden Energy Orb During Test Animation
+      if (chainLab.animating) {
+        let startX, endX;
+        if (chainLab.currentLinkIdx === -1 && slot0) {
+          startX = sunX + sunRadius;
+          endX = slot0.x + slot0.w / 2;
+        } else {
+          const fromR = chainLab.slotRects[chainLab.currentLinkIdx];
+          const toR = chainLab.slotRects[chainLab.currentLinkIdx + 1];
+          if (fromR && toR) {
+            startX = fromR.x + fromR.w / 2;
+            endX = toR.x + toR.w / 2;
+          }
+        }
+        if (startX !== undefined && endX !== undefined) {
+          const orbX = startX + (endX - startX) * chainLab.linkProgress;
+          ctx.save();
+          ctx.fillStyle = '#FACC15';
+          ctx.shadowColor = '#F59E0B';
+          ctx.shadowBlur = 16;
+          ctx.beginPath();
+          ctx.arc(orbX, centerY, 11, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.fillStyle = '#78350F';
+          ctx.font = 'bold 12px sans-serif';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText('⚡', orbX, centerY);
+          ctx.restore();
+        }
+      }
+    }
+
+    function drawComicSpeechBubble(c, anchorX, anchorY, canvasW, speakerName, text) {
+      c.save();
+      const boxW = Math.min(canvasW - 24, 340);
+      const boxH = 54;
+      const boxX = Math.max(12, Math.min(canvasW - boxW - 12, anchorX - boxW / 2));
+      const boxY = Math.max(8, anchorY - boxH - 8);
+
+      // Shadow + white rounded bubble
+      c.shadowColor = 'rgba(15, 23, 42, 0.16)';
+      c.shadowBlur = 10;
+      c.shadowOffsetY = 3;
+      drawRoundedRect(c, boxX, boxY, boxW, boxH, 14);
+      c.fillStyle = '#FFFBEB';
+      c.fill();
+      c.shadowBlur = 0;
+      c.shadowOffsetY = 0;
+      c.strokeStyle = '#F59E0B';
+      c.lineWidth = 2.5;
+      c.stroke();
+
+      // Pointer triangle toward character
+      const tipX = Math.max(boxX + 18, Math.min(boxX + boxW - 18, anchorX));
+      c.fillStyle = '#FFFBEB';
+      c.beginPath();
+      c.moveTo(tipX - 8, boxY + boxH - 1);
+      c.lineTo(tipX + 8, boxY + boxH - 1);
+      c.lineTo(tipX, boxY + boxH + 9);
+      c.closePath();
+      c.fill();
+      c.strokeStyle = '#F59E0B';
+      c.beginPath();
+      c.moveTo(tipX - 8, boxY + boxH);
+      c.lineTo(tipX, boxY + boxH + 9);
+      c.lineTo(tipX + 8, boxY + boxH);
+      c.stroke();
+
+      // Word-wrapped text inside speech bubble (max 2 lines)
+      c.fillStyle = '#1E293B';
+      c.font = 'bold 11.5px Nunito, sans-serif';
+      c.textAlign = 'left';
+      const words = text.split(' ');
+      let line1 = '';
+      let line2 = '';
+      for (const w of words) {
+        if (c.measureText(line1 + w).width < boxW - 22 && !line2) {
+          line1 += w + ' ';
+        } else if (c.measureText(line2 + w).width < boxW - 26) {
+          line2 += w + ' ';
+        } else {
+          line2 = line2.trim() + '...';
+          break;
+        }
+      }
+      c.fillText(line1.trim(), boxX + 12, boxY + 21);
+      if (line2) c.fillText(line2.trim(), boxX + 12, boxY + 38);
+      c.restore();
+    }
+
+    /* ---------------- CUSTOM 2D TEXTBOOK CARTOON ORGANISM ARTIST ---------------- */
+    function drawCartoonOrganism(c, orgId, cx, cy, r, t, isTalking, isSad) {
+      c.save();
+      // Living breathing & bouncing motion
+      const bounce = isTalking ? Math.abs(Math.sin(t * 11)) * 5 : Math.sin(t * 3.2) * 2.2;
+      const sway = Math.sin(t * 2.5) * 0.05;
+      c.translate(cx, cy - bounce);
+      c.rotate(sway);
+
+      const scale = r / 36;
+      c.scale(scale, scale);
+
+      // Periodic natural eye blink
+      const isBlinking = (Math.sin(t * 1.7) > 0.96);
+      // Mouth opening when talking
+      const mouthOpen = isTalking ? (0.3 + Math.abs(Math.sin(t * 15)) * 0.7) : 0;
+
+      // Ground shadow
+      c.fillStyle = 'rgba(15, 23, 42, 0.1)';
+      c.beginPath();
+      c.ellipse(0, 31 + bounce / scale, 22, 5, 0, 0, Math.PI * 2);
+      c.fill();
+
+      switch (orgId) {
+        case 'corn': {
+          // Green leafy husk wings waving
+          c.fillStyle = '#16A34A';
+          c.beginPath();
+          c.ellipse(-16, 8, 9, 20, -0.45 + Math.sin(t * 4) * 0.1, 0, Math.PI * 2);
+          c.ellipse(16, 8, 9, 20, 0.45 - Math.sin(t * 4) * 0.1, 0, Math.PI * 2);
+          c.fill();
+          // Golden corn cob body
+          c.fillStyle = '#FACC15';
+          c.strokeStyle = '#CA8A04';
+          c.lineWidth = 2.2;
+          c.beginPath();
+          c.ellipse(0, -2, 15, 25, 0, 0, Math.PI * 2);
+          c.fill();
+          c.stroke();
+          // Kernel grid dots
+          c.fillStyle = '#EAB308';
+          for (let ky = -18; ky <= 14; ky += 7) {
+            for (let kx = -8; kx <= 8; kx += 6) {
+              c.beginPath();
+              c.arc(kx, ky, 1.7, 0, Math.PI * 2);
+              c.fill();
+            }
+          }
+          // Front green husk collar
+          c.fillStyle = '#22C55E';
+          c.beginPath();
+          c.moveTo(-15, 12);
+          c.quadraticCurveTo(0, 22, 15, 12);
+          c.quadraticCurveTo(8, 28, -8, 28);
+          c.closePath();
+          c.fill();
+          drawCartoonFace(c, 0, -4, isBlinking, mouthOpen, isSad, '#713F12');
+          break;
+        }
+
+        case 'grass': {
+          // Lush meadow grass blades swaying
+          const blades = [
+            { x: -16, h: 34, tilt: -0.35, col: '#16A34A' },
+            { x: 16, h: 34, tilt: 0.35, col: '#16A34A' },
+            { x: -8, h: 42, tilt: -0.15, col: '#22C55E' },
+            { x: 8, h: 42, tilt: 0.15, col: '#22C55E' },
+            { x: 0, h: 46, tilt: 0, col: '#4ADE80' }
+          ];
+          blades.forEach(b => {
+            c.fillStyle = b.col;
+            c.strokeStyle = '#15803D';
+            c.lineWidth = 1.8;
+            c.beginPath();
+            c.moveTo(b.x - 6, 26);
+            c.quadraticCurveTo(b.x + b.tilt * 24, 26 - b.h * 0.6, b.x + b.tilt * 34, 26 - b.h);
+            c.quadraticCurveTo(b.x + b.tilt * 16 + 6, 26 - b.h * 0.5, b.x + 6, 26);
+            c.closePath();
+            c.fill();
+            c.stroke();
+          });
+          drawCartoonFace(c, 0, 8, isBlinking, mouthOpen, isSad, '#052E16');
+          break;
+        }
+
+        case 'seeds': {
+          // Trio of cute smiling golden-brown seeds with sprouts
+          const seeds = [
+            { x: -13, y: 10, rot: -0.25 },
+            { x: 13, y: 10, rot: 0.25 },
+            { x: 0, y: -4, rot: 0 }
+          ];
+          seeds.forEach((s, idx) => {
+            c.save();
+            c.translate(s.x, s.y);
+            c.rotate(s.rot);
+            // Tiny sprout leaf on top
+            c.fillStyle = '#22C55E';
+            c.beginPath();
+            c.ellipse(4, -15, 6, 3, -0.4, 0, Math.PI * 2);
+            c.fill();
+            // Teardrop seed
+            c.fillStyle = '#D97706';
+            c.strokeStyle = '#78350F';
+            c.lineWidth = 2;
+            c.beginPath();
+            c.moveTo(0, -14);
+            c.quadraticCurveTo(12, 0, 0, 13);
+            c.quadraticCurveTo(-12, 0, 0, -14);
+            c.fill();
+            c.stroke();
+            if (idx === 2) drawCartoonFace(c, 0, 1, isBlinking, mouthOpen, isSad, '#451A03', 0.78);
+            c.restore();
+          });
+          break;
+        }
+
+        case 'berries': {
+          // Lush green bush with sweet red berries
+          c.fillStyle = '#16A34A';
+          c.strokeStyle = '#14532D';
+          c.lineWidth = 2.2;
+          c.beginPath();
+          c.arc(-13, 4, 15, 0, Math.PI * 2);
+          c.arc(13, 4, 15, 0, Math.PI * 2);
+          c.arc(0, -8, 18, 0, Math.PI * 2);
+          c.fill();
+          c.stroke();
+          // Red berries
+          c.fillStyle = '#EF4444';
+          [[-14, -6], [15, -4], [-15, 12], [14, 13]].forEach(([bx, by]) => {
+            c.beginPath();
+            c.arc(bx, by, 4, 0, Math.PI * 2);
+            c.fill();
+          });
+          drawCartoonFace(c, 0, 3, isBlinking, mouthOpen, isSad, '#052E16');
+          break;
+        }
+
+        case 'hen': {
+          // Tail feathers
+          c.fillStyle = '#9A3412';
+          c.beginPath();
+          c.ellipse(-18, 2, 10, 6, -0.5, 0, Math.PI * 2);
+          c.fill();
+          // Plump reddish-brown hen body
+          c.fillStyle = '#C2410C';
+          c.strokeStyle = '#7C2D12';
+          c.lineWidth = 2.2;
+          c.beginPath();
+          c.ellipse(0, 4, 18, 20, 0, 0, Math.PI * 2);
+          c.fill();
+          c.stroke();
+          // Red comb on head
+          c.fillStyle = '#EF4444';
+          c.beginPath();
+          c.arc(-3, -17, 4.5, 0, Math.PI * 2);
+          c.arc(2, -19, 5, 0, Math.PI * 2);
+          c.arc(7, -17, 4.5, 0, Math.PI * 2);
+          c.fill();
+          // Wing
+          c.fillStyle = '#EA580C';
+          c.beginPath();
+          c.ellipse(-6, 7, 9, 11, 0.2, 0, Math.PI * 2);
+          c.fill();
+          // Eyes
+          drawCartoonEyes(c, 3, -5, isBlinking, '#1E293B');
+          // Yellow beak (opens when talking!)
+          c.fillStyle = '#FACC15';
+          c.strokeStyle = '#A16207';
+          c.lineWidth = 1.6;
+          c.beginPath();
+          c.moveTo(12, -2);
+          c.lineTo(23, 1 - mouthOpen * 3);
+          c.lineTo(12, 3);
+          c.closePath();
+          c.fill();
+          c.stroke();
+          if (mouthOpen > 0.1) {
+            c.beginPath();
+            c.moveTo(12, 3);
+            c.lineTo(21, 4 + mouthOpen * 4);
+            c.lineTo(12, 6);
+            c.closePath();
+            c.fill();
+            c.stroke();
+          }
+          break;
+        }
+
+        case 'goat': {
+          // Curved horns
+          c.strokeStyle = '#D6D3D1';
+          c.lineWidth = 4.5;
+          c.lineCap = 'round';
+          c.beginPath();
+          c.moveTo(-7, -15);
+          c.quadraticCurveTo(-15, -28, -20, -22);
+          c.moveTo(7, -15);
+          c.quadraticCurveTo(15, -28, 20, -22);
+          c.stroke();
+          // Floppy ears
+          c.fillStyle = '#78350F';
+          c.beginPath();
+          c.ellipse(-18, -7, 7, 4, -0.3, 0, Math.PI * 2);
+          c.ellipse(18, -7, 7, 4, 0.3, 0, Math.PI * 2);
+          c.fill();
+          // Brown-and-white goat face
+          c.fillStyle = '#92400E';
+          c.strokeStyle = '#451A03';
+          c.lineWidth = 2.2;
+          c.beginPath();
+          c.ellipse(0, 2, 16, 19, 0, 0, Math.PI * 2);
+          c.fill();
+          c.stroke();
+          // Cream muzzle & beard
+          c.fillStyle = '#FEF3C7';
+          c.beginPath();
+          c.ellipse(0, 10, 10, 9, 0, 0, Math.PI * 2);
+          c.fill();
+          c.beginPath();
+          c.moveTo(-4, 19);
+          c.lineTo(0, 27);
+          c.lineTo(4, 19);
+          c.fill();
+          drawCartoonFace(c, 0, 0, isBlinking, mouthOpen, isSad, '#451A03');
+          break;
+        }
+
+        case 'zebra': {
+          // Black & white striped mane
+          c.fillStyle = '#1E293B';
+          c.beginPath();
+          c.ellipse(0, -18, 7, 8, 0, 0, Math.PI * 2);
+          c.fill();
+          // Ears
+          c.fillStyle = '#F8FAFC';
+          c.strokeStyle = '#1E293B';
+          c.lineWidth = 2;
+          c.beginPath();
+          c.ellipse(-12, -16, 4, 8, -0.3, 0, Math.PI * 2);
+          c.ellipse(12, -16, 4, 8, 0.3, 0, Math.PI * 2);
+          c.fill();
+          c.stroke();
+          // White head
+          c.beginPath();
+          c.ellipse(0, 2, 16, 20, 0, 0, Math.PI * 2);
+          c.fill();
+          c.stroke();
+          // Zebra stripes on cheeks/forehead
+          c.strokeStyle = '#0F172A';
+          c.lineWidth = 2.8;
+          c.beginPath();
+          c.moveTo(-14, -4); c.lineTo(-7, -2);
+          c.moveTo(14, -4); c.lineTo(7, -2);
+          c.moveTo(0, -16); c.lineTo(0, -9);
+          c.stroke();
+          // Grey muzzle
+          c.fillStyle = '#64748B';
+          c.beginPath();
+          c.ellipse(0, 12, 10, 8, 0, 0, Math.PI * 2);
+          c.fill();
+          drawCartoonFace(c, 0, 1, isBlinking, mouthOpen, isSad, '#0F172A');
+          break;
+        }
+
+        case 'snail': {
+          // Soft green-yellow snail body
+          c.fillStyle = '#FDE047';
+          c.strokeStyle = '#A16207';
+          c.lineWidth = 2;
+          c.beginPath();
+          c.roundRect(-22, 10, 44, 13, 7);
+          c.fill();
+          c.stroke();
+          // Eye stalks
+          c.beginPath();
+          c.moveTo(11, 10); c.lineTo(10, -4);
+          c.moveTo(18, 10); c.lineTo(20, -4);
+          c.stroke();
+          // Spiral orange-brown shell
+          c.fillStyle = '#EA580C';
+          c.strokeStyle = '#7C2D12';
+          c.beginPath();
+          c.arc(-5, 3, 14, 0, Math.PI * 2);
+          c.fill();
+          c.stroke();
+          c.beginPath();
+          c.arc(-5, 3, 7, 0, Math.PI * 1.5);
+          c.stroke();
+          // Cute eyes on stalks
+          drawCartoonEyes(c, 15, -5, isBlinking, '#1E293B', 0.85);
+          // Smiling mouth on front of snail
+          c.strokeStyle = '#713F12';
+          c.beginPath();
+          if (mouthOpen > 0.15) {
+            c.fillStyle = '#DC2626';
+            c.arc(16, 16, 2.5 + mouthOpen * 2, 0, Math.PI * 2);
+            c.fill();
+          } else {
+            c.arc(15, 15, 3.5, 0.1 * Math.PI, 0.9 * Math.PI);
+            c.stroke();
+          }
+          break;
+        }
+
+        case 'mouse': {
+          // Big round ears with pink insides
+          c.fillStyle = '#94A3B8';
+          c.strokeStyle = '#475569';
+          c.lineWidth = 2;
+          c.beginPath();
+          c.arc(-14, -10, 9, 0, Math.PI * 2);
+          c.arc(14, -10, 9, 0, Math.PI * 2);
+          c.fill();
+          c.stroke();
+          c.fillStyle = '#FDA4AF';
+          c.beginPath();
+          c.arc(-14, -10, 5, 0, Math.PI * 2);
+          c.arc(14, -10, 5, 0, Math.PI * 2);
+          c.fill();
+          // Mouse head
+          c.fillStyle = '#CBD5E1';
+          c.beginPath();
+          c.ellipse(0, 4, 15, 16, 0, 0, Math.PI * 2);
+          c.fill();
+          c.stroke();
+          // Whiskers
+          c.strokeStyle = '#475569';
+          c.lineWidth = 1.4;
+          c.beginPath();
+          c.moveTo(-22, 6); c.lineTo(-10, 7);
+          c.moveTo(22, 6); c.lineTo(10, 7);
+          c.stroke();
+          drawCartoonFace(c, 0, 2, isBlinking, mouthOpen, isSad, '#1E293B');
+          // Pink nose
+          c.fillStyle = '#F43F5E';
+          c.beginPath();
+          c.arc(0, 6, 3, 0, Math.PI * 2);
+          c.fill();
+          break;
+        }
+
+        case 'monkey': {
+          // Big round monkey ears
+          c.fillStyle = '#78350F';
+          c.strokeStyle = '#451A03';
+          c.lineWidth = 2;
+          c.beginPath();
+          c.arc(-18, 0, 7.5, 0, Math.PI * 2);
+          c.arc(18, 0, 7.5, 0, Math.PI * 2);
+          c.fill();
+          c.stroke();
+          // Brown furry head
+          c.beginPath();
+          c.arc(0, 2, 17, 0, Math.PI * 2);
+          c.fill();
+          c.stroke();
+          // Tan heart-shaped face mask
+          c.fillStyle = '#FDE68A';
+          c.beginPath();
+          c.arc(-5, -1, 7, 0, Math.PI * 2);
+          c.arc(5, -1, 7, 0, Math.PI * 2);
+          c.ellipse(0, 7, 11, 8, 0, 0, Math.PI * 2);
+          c.fill();
+          drawCartoonFace(c, 0, 1, isBlinking, mouthOpen, isSad, '#451A03');
+          break;
+        }
+
+        case 'owl': {
+          // Feathered ear tufts
+          c.fillStyle = '#78350F';
+          c.beginPath();
+          c.moveTo(-16, -12); c.lineTo(-11, -24); c.lineTo(-5, -14);
+          c.moveTo(16, -12); c.lineTo(11, -24); c.lineTo(5, -14);
+          c.fill();
+          // Plump brown owl body
+          c.fillStyle = '#92400E';
+          c.strokeStyle = '#451A03';
+          c.lineWidth = 2.2;
+          c.beginPath();
+          c.ellipse(0, 3, 18, 21, 0, 0, Math.PI * 2);
+          c.fill();
+          c.stroke();
+          // Cream chest belly
+          c.fillStyle = '#FEF3C7';
+          c.beginPath();
+          c.ellipse(0, 10, 11, 12, 0, 0, Math.PI * 2);
+          c.fill();
+          // Big golden owl eye rings
+          c.fillStyle = '#FACC15';
+          c.beginPath();
+          c.arc(-7, -5, 7, 0, Math.PI * 2);
+          c.arc(7, -5, 7, 0, Math.PI * 2);
+          c.fill();
+          drawCartoonEyes(c, 0, -5, isBlinking, '#0F172A');
+          // Orange beak
+          c.fillStyle = '#F97316';
+          c.beginPath();
+          c.moveTo(-3, 0);
+          c.lineTo(3, 0);
+          c.lineTo(0, 6 + mouthOpen * 3);
+          c.closePath();
+          c.fill();
+          break;
+        }
+
+        case 'tiger': {
+          // Round tiger ears
+          c.fillStyle = '#F97316';
+          c.strokeStyle = '#7C2D12';
+          c.lineWidth = 2.2;
+          c.beginPath();
+          c.arc(-14, -14, 6.5, 0, Math.PI * 2);
+          c.arc(14, -14, 6.5, 0, Math.PI * 2);
+          c.fill();
+          c.stroke();
+          // Bold orange tiger face
+          c.beginPath();
+          c.arc(0, 2, 18, 0, Math.PI * 2);
+          c.fill();
+          c.stroke();
+          // White muzzle cheeks
+          c.fillStyle = '#FFF7ED';
+          c.beginPath();
+          c.ellipse(0, 9, 11, 8, 0, 0, Math.PI * 2);
+          c.fill();
+          // Black tiger stripes
+          c.strokeStyle = '#0F172A';
+          c.lineWidth = 2.6;
+          c.beginPath();
+          c.moveTo(0, -15); c.lineTo(0, -9);
+          c.moveTo(-17, 1); c.lineTo(-10, 1);
+          c.moveTo(17, 1); c.lineTo(10, 1);
+          c.stroke();
+          drawCartoonFace(c, 0, 1, isBlinking, mouthOpen, isSad, '#0F172A');
+          // Pink triangle nose
+          c.fillStyle = '#F43F5E';
+          c.beginPath();
+          c.moveTo(-3.5, 4); c.lineTo(3.5, 4); c.lineTo(0, 8);
+          c.closePath();
+          c.fill();
+          break;
+        }
+
+        case 'boy':
+        default: {
+          // Kid's blue t-shirt shoulders
+          c.fillStyle = '#0284C7';
+          c.beginPath();
+          c.ellipse(0, 23, 16, 9, 0, Math.PI, 0);
+          c.fill();
+          // Warm skin face
+          c.fillStyle = '#FDBA74';
+          c.strokeStyle = '#9A3412';
+          c.lineWidth = 2;
+          c.beginPath();
+          c.arc(0, 1, 16, 0, Math.PI * 2);
+          c.fill();
+          c.stroke();
+          // Dark brown hair
+          c.fillStyle = '#451A03';
+          c.beginPath();
+          c.arc(0, -3, 16.5, Math.PI, 0);
+          c.quadraticCurveTo(6, -8, -16, -3);
+          c.fill();
+          drawCartoonFace(c, 0, 1, isBlinking, mouthOpen, isSad, '#451A03');
+          break;
+        }
+      }
+
+      c.restore();
+    }
+
+    function drawCartoonEyes(c, ox, oy, isBlinking, color = '#0F172A', scale = 1) {
+      c.save();
+      c.translate(ox, oy);
+      c.scale(scale, scale);
+      if (isBlinking) {
+        c.strokeStyle = color;
+        c.lineWidth = 2.2;
+        c.beginPath();
+        c.moveTo(-8, 0); c.lineTo(-3, 0);
+        c.moveTo(3, 0); c.lineTo(8, 0);
+        c.stroke();
+      } else {
+        c.fillStyle = color;
+        c.beginPath();
+        c.arc(-5.5, 0, 2.6, 0, Math.PI * 2);
+        c.arc(5.5, 0, 2.6, 0, Math.PI * 2);
+        c.fill();
+        // Bright white eye sparkle
+        c.fillStyle = '#FFFFFF';
+        c.beginPath();
+        c.arc(-6.3, -0.9, 1, 0, Math.PI * 2);
+        c.arc(4.7, -0.9, 1, 0, Math.PI * 2);
+        c.fill();
+      }
+      c.restore();
+    }
+
+    function drawCartoonFace(c, ox, oy, isBlinking, mouthOpen, isSad, color = '#0F172A', scale = 1) {
+      drawCartoonEyes(c, ox, oy - 3, isBlinking, color, scale);
+      c.save();
+      c.translate(ox, oy + 5);
+      c.scale(scale, scale);
+      c.strokeStyle = color;
+      c.lineWidth = 2.1;
+      if (mouthOpen > 0.15) {
+        c.fillStyle = '#DC2626';
+        c.beginPath();
+        c.ellipse(0, 1, 4.2, 2 + mouthOpen * 3.5, 0, 0, Math.PI * 2);
+        c.fill();
+        c.stroke();
+      } else if (isSad) {
+        c.beginPath();
+        c.arc(0, 4, 4.5, Math.PI * 1.15, Math.PI * 1.85);
+        c.stroke();
+      } else {
+        c.beginPath();
+        c.arc(0, -1, 4.8, 0.15 * Math.PI, 0.85 * Math.PI);
+        c.stroke();
+      }
+      c.restore();
+    }
+
+    function drawEnergyArrow(x1, y1, x2, y2, isActive, isSunRay) {
+      if (x2 <= x1 + 6) return;
+      ctx.save();
+      ctx.strokeStyle = isActive ? (isSunRay ? '#EAB308' : '#EA580C') : '#CBD5E1';
+      ctx.lineWidth = isSunRay ? 3.5 : 4.5;
+      if (isSunRay) ctx.setLineDash([5, 4]);
+      ctx.beginPath();
+      ctx.moveTo(x1, y1);
+      ctx.lineTo(x2 - 8, y2);
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      ctx.fillStyle = isActive ? (isSunRay ? '#EAB308' : '#EA580C') : '#CBD5E1';
+      ctx.beginPath();
+      ctx.moveTo(x2, y2);
+      ctx.lineTo(x2 - 10, y2 - 7);
+      ctx.lineTo(x2 - 10, y2 + 7);
+      ctx.closePath();
+      ctx.fill();
+      ctx.restore();
+    }
+
+    /* =========================================================================
+       8. TEACHER MODE / FULL RESET
+       ========================================================================= */
+    function openTeacherResetModal() {
+      SoundFX.popClick();
+      document.getElementById('teacherResetModal').classList.remove('hidden');
+    }
+    function closeTeacherResetModal() {
+      document.getElementById('teacherResetModal').classList.add('hidden');
+    }
+
+    function executeFullReset() {
+      SoundFX.chimeSuccess();
+      closeTeacherResetModal();
+
+      Object.keys(state.progress).forEach(k => state.progress[k] = false);
+      state.celebratedAll = false;
+      state.answers = {
+        p44_predict: null,
+        p44_sort: {},
+        p44_selectedAnimal: null,
+        p44_cer: { claim: '', evidence: '', reasoning: '' },
+        p45_predict: null,
+        p45_qc1: '',
+        p45_qc2: '',
+        p45_blanks: { b1: '', b2: '', b3: '', b4: '' },
+        p45_activeBlank: 'b1',
+        p45_cer: { claim: '', evidence: '', reasoning: '' }
+      };
+
+      chainLab.solvedChallenges = {};
+      chainLab.showHints = false;
+      chainLab.slowMo = false;
+      chainLab.speaker = null;
+      chainLab.sunPower = 80;
+      document.getElementById('sunSlider').value = '80';
+      document.getElementById('sunValLabel').textContent = '80%';
+      document.getElementById('btnToggleHints').textContent = '🏷️ Role Hints: OFF';
+      document.getElementById('btnSlowMo').textContent = '🐢 Slow-Mo: OFF';
+      document.getElementById('simStatusDot').className = 'w-2.5 h-2.5 rounded-full bg-amber-300';
+
+      selectChallenge('ex1');
+      switchPage(45);
+    }
+
+    /* =========================================================================
+       9. BOOTSTRAP ON WINDOW ONLOAD
+       ========================================================================= */
+    window.onload = function () {
+      resizeCanvas();
+      selectChallenge('ex1');
+      switchPage(45);
+      requestAnimationFrame(renderLoop);
+    };
+  </script>
+</body>
+</html>
